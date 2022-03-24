@@ -17,7 +17,8 @@ namespace Spotify.Repositories
         public async Task<List<Musica>> GetTodos()
         {
             var itens = await _context.Musicas.
-                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
+                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
                 OrderBy(m => m.Nome).AsNoTracking().ToListAsync();
 
             return itens;
@@ -26,10 +27,8 @@ namespace Spotify.Repositories
         public async Task<Musica> GetPorId(int id)
         {
             var item = await _context.Musicas.
-                Include(mb => mb.MusicasBandas).
-                ThenInclude(b => b.Bandas).
-                ThenInclude(ba => ba.BandasArtistas).
-                ThenInclude(a => a.Artistas).
+                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
                 Where(m => m.MusicaId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;

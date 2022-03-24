@@ -10,12 +10,10 @@ namespace Spotify.Controllers
     public class MusicasController : ControllerBase
     {
         private readonly IMusicaRepository _musicaRepository;
-        private readonly IConfiguration _config;
 
-        public MusicasController(IMusicaRepository musicaRepository, IConfiguration config)
+        public MusicasController(IMusicaRepository musicaRepository)
         {
             _musicaRepository = musicaRepository;
-            _config = config;
         }
 
         [HttpGet("todos")]
