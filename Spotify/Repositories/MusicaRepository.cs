@@ -17,6 +17,8 @@ namespace Spotify.Repositories
         public async Task<List<Musica>> GetTodos()
         {
             var estabelecimentosBd = await _context.Musicas.
+                Include(ma => ma.MusicasArtistas).ThenInclude(a => a.Artistas).
+                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
                 OrderBy(m => m.Nome).AsNoTracking().ToListAsync();
 
             return estabelecimentosBd;
