@@ -15,6 +15,8 @@ namespace Spotify.Data
         public DbSet<Banda> Bandas { get; set; }  
         public DbSet<MusicaBanda> MusicasBandas { get; set; }
         public DbSet<Musica> Musicas { get; set; }
+        public DbSet<Album> Albuns { get; set; }
+        public DbSet<AlbumMusica> AlbunsMusicas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

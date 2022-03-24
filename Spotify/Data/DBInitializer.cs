@@ -8,7 +8,7 @@ namespace Spotify.Data
         public static void Initialize(Context context)
         {
             // Exclui o esquema, copia as queries, cria esquema/tabelas, popula o BD;
-            bool resetarBd = true;
+            bool resetarBd = false;
             if (resetarBd)
             {
                 context.Database.EnsureDeleted(); // Excluir o esquema e as tabelas;
@@ -124,10 +124,14 @@ namespace Spotify.Data
 
             if (!context.Musicas.Any())
             {
-                context.Musicas.Add(new Musica() { MusicaId = 1, Nome = "Bohemian Rhapsody", Ouvintes = 0, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Musicas.Add(new Musica() { MusicaId = 2, Nome = "Live forever", Ouvintes = 0, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Musicas.Add(new Musica() { MusicaId = 3, Nome = "Happier than ever", Ouvintes = 0, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Musicas.Add(new Musica() { MusicaId = 4, Nome = "E aí, gordo", Ouvintes = 0, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 1, Nome = "Bohemian Rhapsody", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 2, Nome = "Live forever", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 3, Nome = "Happier than ever", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 4, Nome = "E aí, gordo", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 5, Nome = "Is This It", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 6, Nome = "Soma", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 7, Nome = "Fluorescent Adolescent", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 8, Nome = "505", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.MusicasBandas.Any())
@@ -138,6 +142,27 @@ namespace Spotify.Data
 
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 4, MusicaId = 4, BandaId = 13, IsAtivo = 1, DataRegistro = dataAgora });
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 5, MusicaId = 4, BandaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 6, MusicaId = 5, BandaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 7, MusicaId = 6, BandaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 8, MusicaId = 7, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 9, MusicaId = 8, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+            }
+
+            if (!context.Albuns.Any())
+            {
+                context.Albuns.Add(new Album() { AlbumId = 1, Nome = "Is This It", Sobre = "", Foto = "", DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 2, Nome = "Favourite Worst Nightmare", Sobre = "", Foto = "", DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+            }
+
+            if (!context.AlbunsMusicas.Any())
+            {
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 1, AlbumId = 1, MusicaId = 5, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 2, AlbumId = 1, MusicaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 3, AlbumId = 2, MusicaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 4, AlbumId = 2, MusicaId = 8, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             context.SaveChanges();

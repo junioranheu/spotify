@@ -2,18 +2,16 @@
 
 namespace Spotify.Models
 {
-    public class Musica
+    public class Album
     {
         [Key]
-        public int MusicaId { get; set; }
+        public int AlbumId { get; set; }
         public string? Nome { get; set; }
-        public int Ouvintes { get; set; }
+        public string? Sobre { get; set; }
+        public string? Foto { get; set; }
         public DateTime DataLancamento { get; set; }
         public int IsAtivo { get; set; }
         public DateTime DataRegistro { get; set; }
-
-        // Fk (De cá pra lá);
-        public ICollection<MusicaBanda> MusicasBandas { get; set; }
 
         // Fk (De cá pra lá);
         public ICollection<AlbumMusica> AlbunsMusicas { get; set; }
