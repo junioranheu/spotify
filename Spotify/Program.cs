@@ -47,6 +47,8 @@ builder.Services.AddDbContext<Context>(options => options.UseMySql(con, ServerVe
 
 // Banco (injection) com o Pattern Design: https://www.c-sharpcorner.com/blogs/net-core-mvc-with-entity-framework-core-using-dependency-injection-and-repository
 // NOVOS REPOSITÓRIOS DEVEM SEMPRE SER ADICIONADOS AQUI;
+//builder.Services.AddScoped<IArtistaRepository, ArtistaRepository>();
+//builder.Services.AddScoped<IBandaRepository, BandaRepository>();
 builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 
 // Outros;
