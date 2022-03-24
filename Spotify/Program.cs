@@ -140,4 +140,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
+// Exibir erros;
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
 app.Run();
