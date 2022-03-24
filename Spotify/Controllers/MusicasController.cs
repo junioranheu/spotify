@@ -20,7 +20,7 @@ namespace Spotify.Controllers
         public async Task<ActionResult<List<Musica>>> GetTodos()
         {
             var todos = await _musicaRepository.GetTodos();
-            return todos;
+            return Ok(todos);
         }
 
         [HttpGet("{id}")]
@@ -33,7 +33,7 @@ namespace Spotify.Controllers
                 return NotFound();
             }
 
-            return porId;
+            return Ok(porId);
         }
 
         [HttpPost("criar")]
@@ -47,7 +47,7 @@ namespace Spotify.Controllers
                 return NotFound();
             }
 
-            return true;
+            return Ok(true);
         }
 
         [HttpPost("atualizar")]
@@ -61,7 +61,7 @@ namespace Spotify.Controllers
                 return NotFound();
             }
 
-            return true;
+            return Ok(true);
         }
 
         [HttpPost("deletar")]
@@ -75,7 +75,7 @@ namespace Spotify.Controllers
                 return NotFound();
             }
 
-            return isOk;
+            return Ok(true);
         }
     }
 }

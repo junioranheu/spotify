@@ -32,26 +32,94 @@ namespace Spotify.Data
                 context.Artistas.Add(new Artista() { ArtistaId = 4, Nome = "Mike Grose", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Artistas.Add(new Artista() { ArtistaId = 5, Nome = "Liam Gallagher", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Artistas.Add(new Artista() { ArtistaId = 6, Nome = "Noel Gallagher", IsAtivo = 1, DataRegistro = dataAgora });
-                context.Artistas.Add(new Artista() { ArtistaId = 7, Nome = "Billie Eilish", IsAtivo = 1, DataRegistro = dataAgora });
-                context.Artistas.Add(new Artista() { ArtistaId = 8, Nome = "Chaleco Israel", IsAtivo = 1, DataRegistro = dataAgora });
-            }
-
-            if (!context.MusicasArtistas.Any())
-            {
-                context.MusicasArtistas.Add(new MusicaArtista() { MusicaArtistaId = 1, MusicaId = 3, ArtistaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
-                context.MusicasArtistas.Add(new MusicaArtista() { MusicaArtistaId = 2, MusicaId = 3, ArtistaId = 8, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 7, Nome = "Alex Turner", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 8, Nome = "Matt Helders", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 9, Nome = "Kevin Parker", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 10, Nome = "Matt Shultz", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 11, Nome = "Julian Casablancas", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 12, Nome = "Albert Hammond Jr", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 13, Nome = "Fabrizio Moretti", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 14, Nome = "Nikolai Fraiture", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 15, Nome = "James Mercer", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 16, Nome = "Danger Mouse", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 17, Nome = "Joe Newman", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 18, Nome = "Gus Under-Hamilton", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 19, Nome = "Jesse Rutherford", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 20, Nome = "Harry Styles", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 21, Nome = "Zayn Malik", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 22, Nome = "Liam Payne", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 23, Nome = "Louis Tomlison", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 24, Nome = "Niall Horan", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 25, Nome = "Billie Eilish", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 26, Nome = "Chaleco Israel", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 27, Nome = "Junior", IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.Bandas.Any())
             {
                 context.Bandas.Add(new Banda() { BandaId = 1, Nome = "Queen", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Bandas.Add(new Banda() { BandaId = 2, Nome = "Oasis", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 3, Nome = "Arctic Monkeys", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 4, Nome = "Tame Impala", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 5, Nome = "Cage The Elephant", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 6, Nome = "The Strokes", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 7, Nome = "Broken Bells", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 8, Nome = "The Shins", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 9, Nome = "alt-J", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 10, Nome = "The Neighbourhood", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 11, Nome = "One Direction", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 12, Nome = "Harry Styles", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 13, Nome = "Billie Eilish", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 14, Nome = "Zayn", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 15, Nome = "Chaleco's Group", IsAtivo = 1, DataRegistro = dataAgora });
             }
 
-            if (!context.MusicasBandas.Any())
+            if (!context.BandasArtistas.Any())
             {
-                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 1, MusicaId = 1, BandaId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 2, MusicaId = 2, BandaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 1, BandaId = 1, ArtistaId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 2, BandaId = 1, ArtistaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 3, BandaId = 1, ArtistaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 4, BandaId = 1, ArtistaId = 4, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 5, BandaId = 2, ArtistaId = 5, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 6, BandaId = 2, ArtistaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 7, BandaId = 3, ArtistaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 8, BandaId = 3, ArtistaId = 8, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 9, BandaId = 4, ArtistaId = 9, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 10, BandaId = 5, ArtistaId = 10, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 11, BandaId = 6, ArtistaId = 11, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 12, BandaId = 6, ArtistaId = 12, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 13, BandaId = 6, ArtistaId = 13, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 14, BandaId = 6, ArtistaId = 14, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 15, BandaId = 7, ArtistaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 16, BandaId = 7, ArtistaId = 16, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 17, BandaId = 8, ArtistaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 18, BandaId = 9, ArtistaId = 17, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 19, BandaId = 9, ArtistaId = 18, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 20, BandaId = 10, ArtistaId = 19, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 21, BandaId = 11, ArtistaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 22, BandaId = 11, ArtistaId = 21, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 23, BandaId = 11, ArtistaId = 22, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 24, BandaId = 11, ArtistaId = 23, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 25, BandaId = 11, ArtistaId = 24, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 26, BandaId = 12, ArtistaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 27, BandaId = 13, ArtistaId = 25, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 28, BandaId = 14, ArtistaId = 21, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 29, BandaId = 15, ArtistaId = 26, IsAtivo = 1, DataRegistro = dataAgora });
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 30, BandaId = 15, ArtistaId = 27, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.Musicas.Any())
@@ -59,6 +127,17 @@ namespace Spotify.Data
                 context.Musicas.Add(new Musica() { MusicaId = 1, Nome = "Bohemian Rhapsody", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 2, Nome = "Live forever", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 3, Nome = "Happier than ever", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 4, Nome = "E aí, gordo", IsAtivo = 1, DataRegistro = dataAgora });
+            }
+
+            if (!context.MusicasBandas.Any())
+            {
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 1, MusicaId = 1, BandaId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 2, MusicaId = 2, BandaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 3, MusicaId = 3, BandaId = 13, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 4, MusicaId = 4, BandaId = 13, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 5, MusicaId = 4, BandaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             context.SaveChanges();

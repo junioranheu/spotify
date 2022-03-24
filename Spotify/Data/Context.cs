@@ -11,7 +11,7 @@ namespace Spotify.Data
         }
 
         public DbSet<Artista> Artistas { get; set; }
-        public DbSet<MusicaArtista> MusicasArtistas { get; set; }
+        public DbSet<BandaArtista> BandasArtistas { get; set; }
         public DbSet<Banda> Bandas { get; set; }  
         public DbSet<MusicaBanda> MusicasBandas { get; set; }
         public DbSet<Musica> Musicas { get; set; }

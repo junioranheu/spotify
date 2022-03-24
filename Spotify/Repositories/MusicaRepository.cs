@@ -16,20 +16,23 @@ namespace Spotify.Repositories
 
         public async Task<List<Musica>> GetTodos()
         {
-            var estabelecimentosBd = await _context.Musicas.
-                Include(ma => ma.MusicasArtistas).ThenInclude(a => a.Artistas).
-                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+            var itens = await _context.Musicas.
+                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
                 OrderBy(m => m.Nome).AsNoTracking().ToListAsync();
 
-            return estabelecimentosBd;
+            return itens;
         }
 
         public async Task<Musica> GetPorId(int id)
         {
-            var musicaBd = await _context.Musicas.
+            var item = await _context.Musicas.
+                Include(mb => mb.MusicasBandas).
+                ThenInclude(b => b.Bandas).
+                ThenInclude(ba => ba.BandasArtistas).
+                ThenInclude(a => a.Artistas).
                 Where(m => m.MusicaId == id).AsNoTracking().FirstOrDefaultAsync();
 
-            return musicaBd;
+            return item;
         }
 
         public async Task<int> PostCriar(Musica musica)

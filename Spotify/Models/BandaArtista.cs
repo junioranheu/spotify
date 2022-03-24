@@ -2,14 +2,14 @@
 
 namespace Spotify.Models
 {
-    public class MusicaArtista
+    public class BandaArtista
     {
         [Key]
-        public int MusicaArtistaId { get; set; }
+        public int BandaArtistaId { get; set; }
 
         // Fk (De lá pra cá);
-        public int MusicaId { get; set; }
-        public Musica? Musicas { get; set; }
+        public int BandaId { get; set; }
+        public Banda? Bandas { get; set; }
 
         // Fk (De lá pra cá);
         public int ArtistaId { get; set; }

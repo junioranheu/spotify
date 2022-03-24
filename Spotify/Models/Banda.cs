@@ -11,6 +11,9 @@ namespace Spotify.Models
         public DateTime DataRegistro { get; set; }
 
         // Fk (De cá pra lá);
-        public MusicaBanda? MusicasBandas { get; set; }
+        public ICollection<MusicaBanda> MusicasBandas { get; set; }
+
+        // Fk (De cá pra lá);
+        public ICollection<BandaArtista> BandasArtistas { get; set; }
     }
 }
