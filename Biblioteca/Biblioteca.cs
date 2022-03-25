@@ -7,10 +7,10 @@ namespace Biblioteca
     public class Biblioteca
     {
         // Constantes
-        public const string localApiOnline = "https://fluxoapi.azurewebsites.net/";
-        public const string localApiLocalHost = "https://localhost:7131/";
+        public const string localApiOnline = "https://spotifyapi.azurewebsites.net/";
+        public const string localApiLocalHost = "https://localhost:7225/";
 
-        public const string localReactOnline = "https://fluxo.vercel.app/";
+        public const string localReactOnline = "https://spotify-anheu.vercel.app/";
         public const string localReactLocalHost = "http://localhost:3000/";
 
         // Converter para o horário de Brasilia: https://blog.yowko.com/timezoneinfo-time-zone-id-not-found/;

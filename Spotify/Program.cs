@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Spotify.Data;
 using Spotify.Interfaces;
 using Spotify.Repositories;
+using Spotify.Services;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,8 +50,7 @@ builder.Services.AddDbContext<Context>(options => options.UseMySql(con, ServerVe
 
 // Banco (injection) com o Pattern Design: https://www.c-sharpcorner.com/blogs/net-core-mvc-with-entity-framework-core-using-dependency-injection-and-repository
 // NOVOS REPOSITÓRIOS DEVEM SEMPRE SER ADICIONADOS AQUI;
-//builder.Services.AddScoped<IArtistaRepository, ArtistaRepository>();
-//builder.Services.AddScoped<IBandaRepository, BandaRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 
 // Outros;
@@ -57,27 +59,27 @@ builder.Services.AddMvc();
 // Cors;
 builder.Services.AddCors();
 
-//// Autenticação JWT para a API: https://balta.io/artigos/aspnet-5-autenticacao-autorizacao-bearer-jwt;
-//var key = Encoding.ASCII.GetBytes(Chave.chave);
-//builder.Services.AddAuthentication(x =>
-//{
-//    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//})
-//.AddJwtBearer(x =>
-//{
-//    x.RequireHttpsMetadata = false;
-//    x.SaveToken = true;
-//    x.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(key),
-//        ValidateIssuer = false,
-//        ValidateAudience = false,
-//        ValidateLifetime = true,
-//        ClockSkew = TimeSpan.Zero
-//    };
-//});
+// Autenticação JWT para a API: https://balta.io/artigos/aspnet-5-autenticacao-autorizacao-bearer-jwt;
+var key = Encoding.ASCII.GetBytes(Chave.chave);
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 // Etc (padrão);
 // Adicionar comando "AddNewtonsoftJson" para ignorar "erros" de object cycle - https://stackoverflow.com/questions/59199593/net-core-3-0-possible-object-cycle-was-detected-which-is-not-supported;

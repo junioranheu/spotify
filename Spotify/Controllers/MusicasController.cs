@@ -7,7 +7,7 @@ namespace Spotify.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MusicasController : ControllerBase
+    public class MusicasController : BaseController<MusicasController>
     {
         private readonly IMusicaRepository _musicaRepository;
 

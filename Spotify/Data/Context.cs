@@ -10,6 +10,10 @@ namespace Spotify.Data
             //
         }
 
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<UsuarioTipo> UsuariosTipos { get; set; }
+        public DbSet<UsuarioInformacao> UsuariosInformacoes { get; set; }
+
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<BandaArtista> BandasArtistas { get; set; }
         public DbSet<Banda> Bandas { get; set; }  
