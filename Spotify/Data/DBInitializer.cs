@@ -185,8 +185,8 @@ namespace Spotify.Data
 
             if (!context.Albuns.Any())
             {
-                context.Albuns.Add(new Album() { AlbumId = 1, Nome = "Is This It", Sobre = "", Foto = "", DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Albuns.Add(new Album() { AlbumId = 2, Nome = "Favourite Worst Nightmare", Sobre = "", Foto = "", DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 1, Nome = "Is This It", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 2, Nome = "Favourite Worst Nightmare", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.AlbunsMusicas.Any())

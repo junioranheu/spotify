@@ -52,6 +52,7 @@ builder.Services.AddDbContext<Context>(options => options.UseMySql(con, ServerVe
 // NOVOS REPOSITÓRIOS DEVEM SEMPRE SER ADICIONADOS AQUI;
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
+builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
 
 // Outros;
 builder.Services.AddMvc();

@@ -10,6 +10,11 @@ namespace Spotify.Models
         public string? Sobre { get; set; }
         public string? Foto { get; set; }
         public DateTime DataLancamento { get; set; }
+
+        // Fk (De lá pra cá);
+        public int BandaId { get; set; }
+        public Banda? Bandas { get; set; }
+
         public int IsAtivo { get; set; }
         public DateTime DataRegistro { get; set; }
 
