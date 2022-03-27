@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Spotify.Models
 {
@@ -13,12 +14,14 @@ namespace Spotify.Models
 
         // Fk (De lá pra cá);
         public int BandaId { get; set; }
+        [JsonIgnore]
         public Banda? Bandas { get; set; }
 
         public int IsAtivo { get; set; }
         public DateTime DataRegistro { get; set; }
 
         // Fk (De cá pra lá);
+        [JsonIgnore]
         public ICollection<AlbumMusica> AlbunsMusicas { get; set; }
     }
 }
