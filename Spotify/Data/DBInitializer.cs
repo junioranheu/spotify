@@ -86,6 +86,7 @@ namespace Spotify.Data
                 context.Artistas.Add(new Artista() { ArtistaId = 25, Nome = "Billie Eilish", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Artistas.Add(new Artista() { ArtistaId = 26, Nome = "Chaleco Israel", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Artistas.Add(new Artista() { ArtistaId = 27, Nome = "Junior", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 28, Nome = "Lee Mavers", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.Bandas.Any())
@@ -105,6 +106,7 @@ namespace Spotify.Data
                 context.Bandas.Add(new Banda() { BandaId = 13, Nome = "Billie Eilish", Sobre = "", Foto = "13.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Bandas.Add(new Banda() { BandaId = 14, Nome = "Zayn", Sobre = "", Foto = "14.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Bandas.Add(new Banda() { BandaId = 15, Nome = "Chaleco's Group", Sobre = "", Foto = "15.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 16, Nome = "The La's", Sobre = "", Foto = "16.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.BandasArtistas.Any())
@@ -153,6 +155,8 @@ namespace Spotify.Data
 
                 context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 29, BandaId = 15, ArtistaId = 26, IsAtivo = 1, DataRegistro = dataAgora });
                 context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 30, BandaId = 15, ArtistaId = 27, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 31, BandaId = 16, ArtistaId = 28, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.Musicas.Any())
@@ -165,6 +169,7 @@ namespace Spotify.Data
                 context.Musicas.Add(new Musica() { MusicaId = 6, Nome = "Soma", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 7, Nome = "Fluorescent Adolescent", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 8, Nome = "505", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 9, Nome = "There she goes", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.MusicasBandas.Any())
@@ -180,6 +185,7 @@ namespace Spotify.Data
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 7, MusicaId = 6, BandaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 8, MusicaId = 7, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 9, MusicaId = 8, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 10, MusicaId = 9, BandaId = 16, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.Albuns.Any())
