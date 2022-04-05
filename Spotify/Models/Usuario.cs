@@ -24,5 +24,8 @@ namespace Spotify.Models
 
         // Fk (De cá pra lá);
         public UsuarioInformacao? UsuariosInformacoes { get; set; }
+
+        // Fk (De cá pra lá);
+        public ICollection<Playlist> Playlists { get; set; }
     }
 }

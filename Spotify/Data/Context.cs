@@ -13,7 +13,6 @@ namespace Spotify.Data
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<UsuarioTipo> UsuariosTipos { get; set; }
         public DbSet<UsuarioInformacao> UsuariosInformacoes { get; set; }
-
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<BandaArtista> BandasArtistas { get; set; }
         public DbSet<Banda> Bandas { get; set; }  
@@ -21,6 +20,8 @@ namespace Spotify.Data
         public DbSet<Musica> Musicas { get; set; }
         public DbSet<Album> Albuns { get; set; }
         public DbSet<AlbumMusica> AlbunsMusicas { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<PlaylistMusica> PlaylistsMusicas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

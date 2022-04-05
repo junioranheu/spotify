@@ -53,6 +53,7 @@ builder.Services.AddDbContext<Context>(options => options.UseMySql(con, ServerVe
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
 
 // Outros;
 builder.Services.AddMvc();

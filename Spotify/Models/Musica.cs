@@ -20,5 +20,9 @@ namespace Spotify.Models
         // Fk (De cá pra lá);
         [JsonIgnore]
         public ICollection<AlbumMusica> AlbunsMusicas { get; set; }
+
+        // Fk (De cá pra lá);
+        [JsonIgnore]
+        public ICollection<PlaylistMusica> PlaylistsMusicas { get; set; }
     }
 }

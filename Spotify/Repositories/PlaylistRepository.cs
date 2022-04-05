@@ -5,50 +5,48 @@ using Spotify.Models;
 
 namespace Spotify.Repositories
 {
-    public class MusicaRepository : IMusicaRepository
+    public class PlaylistRepository : IPlaylistRepository
     {
         public readonly Context _context;
 
-        public MusicaRepository(Context context)
+        public PlaylistRepository(Context context)
         {
             _context = context;
         }
 
-        public async Task<List<Musica>> GetTodos()
+        public async Task<List<Playlist>> GetTodos()
         {
-            var itens = await _context.Musicas.
-                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
-                ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
+            var itens = await _context.Playlists.Include(pm => pm.PlaylistsMusicas).
+                ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
                 OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
             return itens;
         }
 
-        public async Task<Musica> GetPorId(int id)
+        public async Task<Playlist> GetPorId(int id)
         {
-            var item = await _context.Musicas.
-                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
-                ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
-                Where(m => m.MusicaId == id).AsNoTracking().FirstOrDefaultAsync();
+            var item = await _context.Playlists.Include(pm => pm.PlaylistsMusicas).
+                ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                Where(p => p.PlaylistId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;
         }
 
-        public async Task<int> PostCriar(Musica musica)
+        public async Task<int> PostCriar(Playlist playlist)
         {
-            _context.Add(musica);
+            _context.Add(playlist);
             var isOk = await _context.SaveChangesAsync();
 
             return isOk;
         }
 
-        public async Task<int> PostAtualizar(Musica musica)
+        public async Task<int> PostAtualizar(Playlist playlist)
         {
             int isOk;
 
             try
             {
-                _context.Update(musica);
+                _context.Update(playlist);
                 isOk = await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -61,14 +59,14 @@ namespace Spotify.Repositories
 
         public async Task<int> PostDeletar(int id)
         {
-            var dados = await _context.Musicas.FindAsync(id);
+            var dados = await _context.Playlists.FindAsync(id);
 
             if (dados == null)
             {
                 throw new Exception("Registro com o id " + id + " não foi encontrado");
             }
 
-            _context.Musicas.Remove(dados);
+            _context.Playlists.Remove(dados);
             var isOk = await _context.SaveChangesAsync();
 
             return isOk;
@@ -76,7 +74,7 @@ namespace Spotify.Repositories
 
         private async Task<bool> IsExiste(int id)
         {
-            return await _context.Musicas.AnyAsync(m => m.MusicaId == id);
+            return await _context.Playlists.AnyAsync(p => p.PlaylistId == id);
         }
     }
 }

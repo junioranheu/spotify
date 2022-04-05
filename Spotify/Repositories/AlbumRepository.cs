@@ -19,7 +19,7 @@ namespace Spotify.Repositories
             var itens = await _context.Albuns.
                 Include(b => b.Bandas).
                 Include(a => a.AlbunsMusicas).ThenInclude(m => m.Musicas).
-                OrderBy(m => m.Nome).AsNoTracking().ToListAsync();
+                OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
             return itens;
         }
