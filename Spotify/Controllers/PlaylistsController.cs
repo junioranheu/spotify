@@ -5,6 +5,8 @@ using Spotify.Models;
 
 namespace Spotify.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class PlaylistsController : BaseController<PlaylistsController>
     {
         private readonly IPlaylistRepository _playlistRepository;
