@@ -229,11 +229,11 @@ namespace Spotify.Data
             // Playlists e PlaylistsMusicas;
             if (!context.Playlists.Any())
             {
-                context.Playlists.Add(new Playlist() { PlaylistId = 1, Nome = "Indie rock", Sobre = "Apenas músicas indies", Foto = "1.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 2, Nome = "Rock 🤘", Sobre = "Os mais clássicos", Foto = "2.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 1, Nome = "Indie Rock Club", Sobre = "Apenas músicas indies", Foto = "1.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 2, Nome = "Energy Booster Rock 🤘", Sobre = "Os mais clássicos", Foto = "2.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Playlists.Add(new Playlist() { PlaylistId = 3, Nome = "Oi né?", Sobre = "Sapo klo", Foto = "3.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 4, Nome = "Pop pop pop 💋", Sobre = "Cabro reklo", Foto = "4.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 5, Nome = "Funk 🩸", Sobre = "As mais tocadas", Foto = "5.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 4, Nome = "Happy Pop Hits 💋", Sobre = "Cabro reklo", Foto = "4.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 5, Nome = "Mother Funk", Sobre = "As mais tocadas", Foto = "5.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.PlaylistsMusicas.Any())
