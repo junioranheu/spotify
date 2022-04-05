@@ -19,6 +19,7 @@ namespace Spotify.Repositories
             var itens = await _context.Musicas.
                 Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
                 ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
+                Include(am => am.AlbunsMusicas).ThenInclude(a => a.Albuns).
                 OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
             return itens;
@@ -29,6 +30,7 @@ namespace Spotify.Repositories
             var item = await _context.Musicas.
                 Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
                 ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
+                Include(am => am.AlbunsMusicas).ThenInclude(a => a.Albuns).
                 Where(m => m.MusicaId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;

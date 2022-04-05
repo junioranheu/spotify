@@ -88,6 +88,8 @@ namespace Spotify.Data
                 context.Artistas.Add(new Artista() { ArtistaId = 26, Nome = "Chaleco Israel", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Artistas.Add(new Artista() { ArtistaId = 27, Nome = "Junior", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
                 context.Artistas.Add(new Artista() { ArtistaId = 28, Nome = "Lee Mavers", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 29, Nome = "MC Poze do Rodo", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
+                context.Artistas.Add(new Artista() { ArtistaId = 30, Nome = "Rúbel Brisolla", Foto = "", IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.Bandas.Any())
@@ -108,6 +110,8 @@ namespace Spotify.Data
                 context.Bandas.Add(new Banda() { BandaId = 14, Nome = "Zayn", Sobre = "", Foto = "14.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Bandas.Add(new Banda() { BandaId = 15, Nome = "Chaleco's Group", Sobre = "", Foto = "15.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Bandas.Add(new Banda() { BandaId = 16, Nome = "The La's", Sobre = "", Foto = "16.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 17, Nome = "MC Poze do Rodo", Sobre = "", Foto = "17.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 18, Nome = "Rúbel", Sobre = "", Foto = "18.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.BandasArtistas.Any())
@@ -158,20 +162,30 @@ namespace Spotify.Data
                 context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 30, BandaId = 15, ArtistaId = 27, IsAtivo = 1, DataRegistro = dataAgora });
 
                 context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 31, BandaId = 16, ArtistaId = 28, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 32, BandaId = 17, ArtistaId = 29, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.BandasArtistas.Add(new BandaArtista() { BandaArtistaId = 33, BandaId = 18, ArtistaId = 30, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             // Musicas e MusicasBandas;
             if (!context.Musicas.Any())
             {
-                context.Musicas.Add(new Musica() { MusicaId = 1, Nome = "Bohemian Rhapsody", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 1, Nome = "Bohemian rhapsody", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 2, Nome = "Live forever", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 3, Nome = "Happier than ever", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 4, Nome = "E aí, gordo", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Musicas.Add(new Musica() { MusicaId = 5, Nome = "Is This It", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 5, Nome = "Is this it", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 6, Nome = "Soma", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Musicas.Add(new Musica() { MusicaId = 7, Nome = "Fluorescent Adolescent", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 7, Nome = "Fluorescent adolescent", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 8, Nome = "505", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Musicas.Add(new Musica() { MusicaId = 9, Nome = "There she goes", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 10, Nome = "Summer love", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 11, Nome = "If I had a gun...", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 12, Nome = "Shelter", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 13, Nome = "Vida louca", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 14, Nome = "Quando bate aquela saudade", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Musicas.Add(new Musica() { MusicaId = 15, Nome = "No. 1 party anthem", Ouvintes = 0, DataLancamento = dataAgora, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.MusicasBandas.Any())
@@ -188,6 +202,12 @@ namespace Spotify.Data
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 8, MusicaId = 7, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 9, MusicaId = 8, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
                 context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 10, MusicaId = 9, BandaId = 16, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 11, MusicaId = 10, BandaId = 11, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 12, MusicaId = 11, BandaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 13, MusicaId = 12, BandaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 14, MusicaId = 13, BandaId = 17, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 15, MusicaId = 14, BandaId = 18, IsAtivo = 1, DataRegistro = dataAgora });
+                context.MusicasBandas.Add(new MusicaBanda() { MusicaBandaId = 16, MusicaId = 15, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             // Albuns e AlbunsMusicas;
