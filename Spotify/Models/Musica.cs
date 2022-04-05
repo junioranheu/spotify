@@ -9,6 +9,7 @@ namespace Spotify.Models
         public int MusicaId { get; set; }
         public string? Nome { get; set; }
         public int Ouvintes { get; set; }
+        public int DuracaoSegundos { get; set; }
         public DateTime DataLancamento { get; set; }
         public int IsAtivo { get; set; }
         public DateTime DataRegistro { get; set; }
