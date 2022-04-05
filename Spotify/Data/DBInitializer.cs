@@ -229,9 +229,11 @@ namespace Spotify.Data
             // Playlists e PlaylistsMusicas;
             if (!context.Playlists.Any())
             {
-                context.Playlists.Add(new Playlist() { PlaylistId = 1, Nome = "Indie rock", Sobre = "Apenas músicas indies", Foto = "", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 2, Nome = "Rock", Sobre = "Os mais clássicos", Foto = "", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 3, Nome = "Oi né", Sobre = "Sapo klo", Foto = "", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 1, Nome = "Indie rock", Sobre = "Apenas músicas indies", Foto = "1.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 2, Nome = "Rock 🤘", Sobre = "Os mais clássicos", Foto = "2.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 3, Nome = "Oi né?", Sobre = "Sapo klo", Foto = "3.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 4, Nome = "Pop pop pop 💋", Sobre = "Cabro reklo", Foto = "4.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 5, Nome = "Funk 🩸", Sobre = "As mais tocadas", Foto = "5.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.PlaylistsMusicas.Any())
@@ -246,6 +248,11 @@ namespace Spotify.Data
 
                 context.PlaylistsMusicas.Add(new PlaylistMusica() { PlaylistMusicaId = 7, PlaylistId = 3, MusicaId = 4, IsAtivo = 1, DataRegistro = dataAgora });
 
+                context.PlaylistsMusicas.Add(new PlaylistMusica() { PlaylistMusicaId = 8, PlaylistId = 4, MusicaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.PlaylistsMusicas.Add(new PlaylistMusica() { PlaylistMusicaId = 9, PlaylistId = 4, MusicaId = 9, IsAtivo = 1, DataRegistro = dataAgora });
+                context.PlaylistsMusicas.Add(new PlaylistMusica() { PlaylistMusicaId = 10, PlaylistId = 4, MusicaId = 10, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.PlaylistsMusicas.Add(new PlaylistMusica() { PlaylistMusicaId = 11, PlaylistId = 5, MusicaId = 13, IsAtivo = 1, DataRegistro = dataAgora });
             }
             #endregion
 
