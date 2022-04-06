@@ -129,7 +129,7 @@ namespace Spotify.Data
                 context.Bandas.Add(new Banda() { BandaId = 22, Nome = "Red Hot Chili Peppers", Sobre = "", Foto = "22.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Bandas.Add(new Banda() { BandaId = 23, Nome = "The Beatles", Sobre = "", Foto = "23.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Bandas.Add(new Banda() { BandaId = 24, Nome = "George Harrison", Sobre = "", Foto = "24.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Bandas.Add(new Banda() { BandaId = 25, Nome = "Marisa Monte", Sobre = "", Foto = "24.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Bandas.Add(new Banda() { BandaId = 25, Nome = "Marisa Monte", Sobre = "", Foto = "25.webp", Seguidores = 0, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.BandasArtistas.Any())
