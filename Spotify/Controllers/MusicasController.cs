@@ -36,6 +36,19 @@ namespace Spotify.Controllers
             return Ok(porId);
         }
 
+        [HttpGet("porPlaylist/{id}")]
+        public async Task<ActionResult<Musica>> GetPorPlaylist(int id)
+        {
+            var porId = await _musicaRepository.GetPorPlaylist(id);
+
+            if (porId == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(porId);
+        }
+
         [HttpPost("criar")]
         [Authorize(Roles = "1")]
         public async Task<ActionResult<bool>> PostCriar(Musica musica)

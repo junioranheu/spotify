@@ -6,6 +6,7 @@ namespace Spotify.Interfaces
     {
         Task<List<Musica>> GetTodos();
         Task<Musica> GetPorId(int id);
+        Task<List<Musica>> GetPorPlaylist(int id);
         Task<int> PostCriar(Musica musica);
         Task<int> PostAtualizar(Musica musica);
         Task<int> PostDeletar(int id);
