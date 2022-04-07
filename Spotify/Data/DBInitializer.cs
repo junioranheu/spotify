@@ -275,6 +275,14 @@ namespace Spotify.Data
             {
                 context.Albuns.Add(new Album() { AlbumId = 1, Nome = "Is This It", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Albuns.Add(new Album() { AlbumId = 2, Nome = "Favourite Worst Nightmare", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 3, Nome = "Continuum", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 4, Nome = "Sob Rock", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 5, Nome = "Definitely Maybe", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 6, Nome = "Happier Than Ever", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 13, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 7, Nome = "Take Me Home", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 11, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 8, Nome = "AM", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 9, Nome = "The Getaway", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 22, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Albuns.Add(new Album() { AlbumId = 10, Nome = "All Things Must Pass", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 24, IsAtivo = 1, DataRegistro = dataAgora });          
             }
 
             if (!context.AlbunsMusicas.Any())
@@ -284,6 +292,23 @@ namespace Spotify.Data
 
                 context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 3, AlbumId = 2, MusicaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
                 context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 4, AlbumId = 2, MusicaId = 8, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 4, AlbumId = 3, MusicaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 4, AlbumId = 4, MusicaId = 16, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 5, AlbumId = 4, MusicaId = 18, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 6, AlbumId = 5, MusicaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 7, AlbumId = 6, MusicaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 8, AlbumId = 7, MusicaId = 10, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 9, AlbumId = 8, MusicaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 10, AlbumId = 9, MusicaId = 17, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 11, AlbumId = 10, MusicaId = 26, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             // Playlists e PlaylistsMusicas;

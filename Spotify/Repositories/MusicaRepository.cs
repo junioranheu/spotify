@@ -40,6 +40,11 @@ namespace Spotify.Repositories
         {
             var item = await _context.Musicas.
                 Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Playlists).
+                 
+                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
+                Include(am => am.AlbunsMusicas).ThenInclude(a => a.Albuns).
+
                 Where(p => p.IsAtivo == 1).AsNoTracking().ToListAsync();
 
             List<Musica> m = new();
