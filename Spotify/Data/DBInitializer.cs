@@ -316,7 +316,7 @@ namespace Spotify.Data
             {
                 context.Playlists.Add(new Playlist() { PlaylistId = 1, Nome = "Indie Rock Club", Sobre = "Apenas músicas indies", Foto = "1.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Playlists.Add(new Playlist() { PlaylistId = 2, Nome = "Energy Booster Rock 🤘", Sobre = "Os mais clássicos", Foto = "2.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 3, Nome = "Oi né?", Sobre = "Os hits mais tops do momento, Faraon Love Shady, por exemplo! 👌", Foto = "3.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 3, Nome = "Oi né?", Sobre = "Os hits mais tops do momento, Faraon Love Shady, por exemplo! 👌", Foto = "3.webp", UsuarioId = 1, IsAtivo = 0, DataRegistro = dataAgora });
                 context.Playlists.Add(new Playlist() { PlaylistId = 4, Nome = "Happy Pop Hits 💋", Sobre = "Cabro reklo", Foto = "4.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Playlists.Add(new Playlist() { PlaylistId = 5, Nome = "Mother Funk", Sobre = "As mais tocadas", Foto = "5.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
                 context.Playlists.Add(new Playlist() { PlaylistId = 6, Nome = "Amor, I love you ❤️", Sobre = "Para chorar de amor", Foto = "6.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
