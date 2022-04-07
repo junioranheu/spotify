@@ -293,22 +293,22 @@ namespace Spotify.Data
                 context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 3, AlbumId = 2, MusicaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
                 context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 4, AlbumId = 2, MusicaId = 8, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 4, AlbumId = 3, MusicaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 5, AlbumId = 3, MusicaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 4, AlbumId = 4, MusicaId = 16, IsAtivo = 1, DataRegistro = dataAgora });
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 5, AlbumId = 4, MusicaId = 18, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 6, AlbumId = 4, MusicaId = 16, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 7, AlbumId = 4, MusicaId = 18, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 6, AlbumId = 5, MusicaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 8, AlbumId = 5, MusicaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 7, AlbumId = 6, MusicaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 9, AlbumId = 6, MusicaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 8, AlbumId = 7, MusicaId = 10, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 10, AlbumId = 7, MusicaId = 10, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 9, AlbumId = 8, MusicaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 11, AlbumId = 8, MusicaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 10, AlbumId = 9, MusicaId = 17, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 12, AlbumId = 9, MusicaId = 17, IsAtivo = 1, DataRegistro = dataAgora });
 
-                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 11, AlbumId = 10, MusicaId = 26, IsAtivo = 1, DataRegistro = dataAgora });
+                context.AlbunsMusicas.Add(new AlbumMusica() { AlbumMusicaId = 13, AlbumId = 10, MusicaId = 26, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             // Playlists e PlaylistsMusicas;
