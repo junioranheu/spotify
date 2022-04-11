@@ -146,10 +146,12 @@ app.UseAuthorization();
 app.MapControllers();
 
 // Exibir erros;
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseDeveloperExceptionPage();
+//}
+
+app.UseDeveloperExceptionPage();
 
 // Habilitar static files para exibir as imagens da API: https://youtu.be/jSO5KJLd5Qk?t=86;
 IWebHostEnvironment env = app.Environment;
