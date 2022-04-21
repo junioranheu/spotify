@@ -158,7 +158,14 @@ IWebHostEnvironment env = app.Environment;
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Upload")),
-    RequestPath = "/Upload"
+    RequestPath = "/Upload",
+
+    // CORS: https://stackoverflow.com/questions/61152499/dotnet-core-3-1-cors-issue-when-serving-static-image-files;
+    OnPrepareResponse = ctx =>
+    {
+        ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+        ctx.Context.Response.Headers.Append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    }
 });
 
 app.Run();
