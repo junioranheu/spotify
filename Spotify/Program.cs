@@ -56,11 +56,11 @@ builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
 builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
 
-// Outros;
-builder.Services.AddMvc();
-
 // Cors;
 builder.Services.AddCors();
+
+// Outros;
+builder.Services.AddMvc();
 
 // Autenticação JWT para a API: https://balta.io/artigos/aspnet-5-autenticacao-autorizacao-bearer-jwt;
 var key = Encoding.ASCII.GetBytes(Chave.chave);
