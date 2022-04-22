@@ -26,7 +26,7 @@ namespace Spotify.Controllers
             }
 
             byte[] imageArray = System.IO.File.ReadAllBytes(caminhoDestino);
-            string base64 = Convert.ToBase64String(imageArray);
+            string base64 = "data:image/gif;base64," + Convert.ToBase64String(imageArray);
 
             return base64;
         }
