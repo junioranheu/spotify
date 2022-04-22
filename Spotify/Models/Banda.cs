@@ -11,6 +11,7 @@ namespace Spotify.Models
         public string? Foto { get; set; }
         public int Seguidores { get; set; }
         public int IsAtivo { get; set; }
+        public string? CorDominante { get; set; }
         public DateTime DataRegistro { get; set; }
 
         // Fk (De cá pra lá);
