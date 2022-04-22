@@ -119,16 +119,16 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline;
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
+//{
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Spotify v1");
-        c.DocExpansion(DocExpansion.None); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/279
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Spotify v1");
+    c.DocExpansion(DocExpansion.None); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/279
     }
-    );
-}
+);
+//}
 
 // Cors;
 app.UseCors(x => x
@@ -148,10 +148,8 @@ app.MapControllers();
 // Exibir erros;
 //if (app.Environment.IsDevelopment())
 //{
-//    app.UseDeveloperExceptionPage();
-//}
-
 app.UseDeveloperExceptionPage();
+//}
 
 // Habilitar static files para exibir as imagens da API: https://youtu.be/jSO5KJLd5Qk?t=86;
 IWebHostEnvironment env = app.Environment;
