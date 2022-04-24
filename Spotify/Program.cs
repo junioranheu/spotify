@@ -14,6 +14,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ----------------------------------------------------- Services -----------------------------------------------------
 
+// Habilitar API por IP em vez de apenas localhost: https://stackoverflow.com/questions/69532898/asp-net-core-6-0-kestrel-server-is-not-working;
+if (builder.Environment.IsDevelopment())
+{
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        // 5001 e 7225 são as portas. Exemplo: https://192.168.8.211:7225/api/Musicas/todos
+        options.ListenAnyIP(5001);
+        // options.ListenAnyIP(7225, configure => configure.UseHttps());
+    });
+}
+
+// Swagger;
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Spotify", Version = "v1" });
@@ -126,7 +138,7 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Spotify v1");
     c.DocExpansion(DocExpansion.None); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/279
-    }
+}
 );
 //}
 
@@ -139,8 +151,13 @@ app.UseCors(x => x
 // Ativa o HealthChecks;
 app.UseHealthChecks("/status");
 
+// Redirecionar sempre para HTTPS;
+if (app.Environment.IsProduction())
+{
+    app.UseHttpsRedirection();
+}
+
 // Outros;
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
