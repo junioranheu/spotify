@@ -19,9 +19,9 @@ if (builder.Environment.IsDevelopment())
 {
     builder.WebHost.ConfigureKestrel(options =>
     {
-        // 5001 e 7225 são as portas. Exemplo: https://192.168.8.211:7225/api/Musicas/todos
-        options.ListenAnyIP(5001);
-        // options.ListenAnyIP(7225, configure => configure.UseHttps());
+        // Exemplo: https://192.168.8.211:7225/api/Musicas/todos, https://192.168.8.214:7225/api/Musicas/todos 
+        options.ListenAnyIP(7225, c => c.UseHttps());
+        options.ListenAnyIP(7226);
     });
 }
 
