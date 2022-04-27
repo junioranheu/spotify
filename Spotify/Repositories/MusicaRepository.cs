@@ -39,32 +39,15 @@ namespace Spotify.Repositories
         public async Task<List<Musica>> GetPorPlaylist(int id)
         {
             var item = await _context.Musicas.
-                Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Playlists).
-                 
-                Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
-                ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
-                Include(am => am.AlbunsMusicas).ThenInclude(a => a.Albuns).
+            Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Playlists).
 
-                Where(p => p.IsAtivo == 1).AsNoTracking().ToListAsync();
+            Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+            ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
+            Include(am => am.AlbunsMusicas).ThenInclude(a => a.Albuns).
 
-            List<Musica> m = new();
-            if (item != null)
-            {
-                foreach (var playlist in item)
-                {
-                    var musicas = playlist.PlaylistsMusicas.Where(p => p.PlaylistId == id);
+            Where(p => p.IsAtivo == 1 && p.PlaylistsMusicas.All(z => z.PlaylistId == id)).AsNoTracking().ToListAsync();
 
-                    foreach (var musica in musicas)
-                    {
-                        if (musica.Musicas != null)
-                        {
-                            m.Add(musica.Musicas);
-                        }
-                    }
-                }
-            }
-
-            return m;
+            return item;
         }
         public async Task<int> PostCriar(Musica musica)
         {
