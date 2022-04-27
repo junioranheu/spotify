@@ -316,12 +316,12 @@ namespace Spotify.Data
             // Playlists e PlaylistsMusicas;
             if (!context.Playlists.Any())
             {
-                context.Playlists.Add(new Playlist() { PlaylistId = 1, Nome = "Indie Rock Club", Sobre = "Apenas músicas indies", Foto = "1.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 2, Nome = "Energy Booster Rock 🤘", Sobre = "Os mais clássicos", Foto = "2.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 3, Nome = "Oi né?", Sobre = "Os hits mais tops do momento, Faraon Love Shady, por exemplo! 👌", Foto = "3.webp", UsuarioId = 1, IsAtivo = 0, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 4, Nome = "Happy Pop Hits 💋", Sobre = "Cabro reklo", Foto = "4.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 5, Nome = "Mother Funk", Sobre = "As mais tocadas", Foto = "5.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
-                context.Playlists.Add(new Playlist() { PlaylistId = 6, Nome = "Amor, I love you ❤️", Sobre = "Para chorar de amor", Foto = "6.webp", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 1, Nome = "Indie Rock Club", Sobre = "Apenas músicas indies", Foto = "1.webp", CorDominante = "rgba(207, 26, 46, 1)", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 2, Nome = "Energy Booster Rock 🤘", Sobre = "Os mais clássicos", Foto = "2.webp", CorDominante = "rgba(236, 30, 52, 1)", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 3, Nome = "Oi né?", Sobre = "Os hits mais tops do momento, Faraon Love Shady, por exemplo! 👌", Foto = "3.webp", CorDominante = "rgba(45, 216, 145, 1)", UsuarioId = 1, IsAtivo = 0, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 4, Nome = "Happy Pop Hits 💋", Sobre = "Cabro reklo", Foto = "4.webp", CorDominante = "rgba(81, 155, 246, 1)", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 5, Nome = "Mother Funk", Sobre = "As mais tocadas", Foto = "5.webp", CorDominante = "rgba(34, 54, 104, 1)", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.Playlists.Add(new Playlist() { PlaylistId = 6, Nome = "Amor, I love you ❤️", Sobre = "Para chorar de amor", Foto = "6.webp", CorDominante = "rgba(220, 196, 159, 1)", UsuarioId = 1, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.PlaylistsMusicas.Any())
