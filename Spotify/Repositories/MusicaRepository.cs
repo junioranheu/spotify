@@ -49,6 +49,7 @@ namespace Spotify.Repositories
 
             return item;
         }
+
         public async Task<int> PostCriar(Musica musica)
         {
             _context.Add(musica);
@@ -92,6 +93,32 @@ namespace Spotify.Repositories
         private async Task<bool> IsExiste(int id)
         {
             return await _context.Musicas.AnyAsync(m => m.MusicaId == id);
+        }
+
+        public async Task<int> PostIncrementarOuvinte(int musicaId)
+        {
+            int isOk;
+
+            try
+            {
+                var musica = await _context.Musicas.Where(m => m.MusicaId == musicaId).AsNoTracking().FirstOrDefaultAsync();
+
+                if (musica == null)
+                {
+                    throw new Exception($"Nenhuma música foi encontrada com o id {musicaId}");
+                }
+
+                musica.Ouvintes += 1;
+
+                _context.Update(musica);
+                isOk = await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return isOk;
         }
     }
 }

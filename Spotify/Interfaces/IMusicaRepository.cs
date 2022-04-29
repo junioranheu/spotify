@@ -10,5 +10,6 @@ namespace Spotify.Interfaces
         Task<int> PostCriar(Musica musica);
         Task<int> PostAtualizar(Musica musica);
         Task<int> PostDeletar(int id);
+        Task<int> PostIncrementarOuvinte(int musicaId);
     }
 }

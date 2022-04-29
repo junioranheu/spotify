@@ -90,5 +90,18 @@ namespace Spotify.Controllers
 
             return Ok(true);
         }
+
+        [HttpPost("incrementarOuvinte")]
+        public async Task<ActionResult<bool>> PostIncrementarOuvinte(int musicaId)
+        {
+            var isOk = await _musicaRepository.PostIncrementarOuvinte(musicaId);
+
+            if (isOk < 1)
+            {
+                return NotFound();
+            }
+
+            return Ok(true);
+        }
     }
 }
