@@ -120,5 +120,20 @@ namespace Spotify.Repositories
 
             return isOk;
         }
+
+        public async Task<List<Musica>> GetPorPalavraChave(string palavraChave)
+        {
+            var item = await _context.Musicas.
+            Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Playlists).
+            Include(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
+            Include(am => am.AlbunsMusicas).ThenInclude(a => a.Albuns).
+
+            Where(p => p.IsAtivo == 1 && (
+                                            p.Nome.Contains(palavraChave) || // Nome da música;
+                                            p.MusicasBandas.All(z => z.Bandas.Nome.Contains(palavraChave)) // Nome da banda;
+                                         )).AsNoTracking().ToListAsync();
+
+            return item;
+        }
     }
 }

@@ -103,5 +103,18 @@ namespace Spotify.Controllers
 
             return Ok(true);
         }
+
+        [HttpGet("porPalavraChave/{palavraChave}")]
+        public async Task<ActionResult<List<Musica>>> GetPorPalavraChave(string palavraChave)
+        {
+            var porPalavra = await _musicaRepository.GetPorPalavraChave(palavraChave);
+
+            if (porPalavra == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(porPalavra);
+        }
     }
 }
