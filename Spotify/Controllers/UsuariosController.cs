@@ -38,6 +38,15 @@ namespace Spotify.Controllers
             return token;
         }
 
+        [HttpGet("autenticarTesteUnitario")]
+        public ActionResult<string> AutenticarTesteUnitario()
+        {
+            // Gera o Token;
+            var token = TokenService.ServicoGerarToken(1, "adm", 1);
+
+            return token;
+        }
+
         [HttpGet("todos")]
         [Authorize]
         public async Task<ActionResult<List<Usuario>>> GetTodos()

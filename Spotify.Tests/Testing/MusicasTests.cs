@@ -15,11 +15,11 @@ namespace Spotify.Tests.Testing
 
         public MusicasTests()
         {
-            _testProvider = new TestClientProvider(); 
+            _testProvider = new TestClientProvider();
         }
 
         [Fact]
-        public async Task GetTodos()
+        public async Task Test_GetTodos()
         {
             using var client = _testProvider.Client;
             var response = await client.GetAsync($"{caminhoApi}/todos");
@@ -33,7 +33,7 @@ namespace Spotify.Tests.Testing
         }
 
         [Fact]
-        public async Task GetPorId()
+        public async Task Test_GetPorId()
         {
             int id = 1;
 
@@ -46,6 +46,21 @@ namespace Spotify.Tests.Testing
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.True(content != null);
+        }
+
+        [Fact]
+        public async Task Test_PostIncrementarOuvinte()
+        {
+            int id = 1;
+
+            using var client = _testProvider.Client;
+            var response = await client.PostAsync($"{caminhoApi}/incrementarOuvinte?musicaId={id}", null);
+            response.EnsureSuccessStatusCode();
+
+            var contentStr = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.True(contentStr == "true");
         }
     }
 }
