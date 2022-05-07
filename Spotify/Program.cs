@@ -184,3 +184,6 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.Run();
+
+// Deixar o Program.cs public para o xUnit;
+public partial class Program { }
