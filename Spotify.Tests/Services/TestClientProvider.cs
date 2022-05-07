@@ -19,6 +19,7 @@ namespace Spotify.Tests.Services
             Client = application.CreateClient();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1816:Os métodos Dispose devem chamar SuppressFinalize", Justification = "<Pendente>")]
         public void Dispose()
         {
             application?.Dispose();

@@ -10,12 +10,18 @@ namespace Spotify.Tests.Testing
 {
     public class MusicasTests
     {
+        private readonly TestClientProvider _testProvider;
         private const string caminhoApi = "/api/Musicas";
+
+        public MusicasTests()
+        {
+            _testProvider = new TestClientProvider(); 
+        }
 
         [Fact]
         public async Task GetTodos()
         {
-            using var client = new TestClientProvider().Client;
+            using var client = _testProvider.Client;
             var response = await client.GetAsync($"{caminhoApi}/todos");
             response.EnsureSuccessStatusCode();
 
@@ -31,7 +37,7 @@ namespace Spotify.Tests.Testing
         {
             int id = 1;
 
-            using var client = new TestClientProvider().Client;
+            using var client = _testProvider.Client;
             var response = await client.GetAsync($"{caminhoApi}/{id}");
             response.EnsureSuccessStatusCode();
 
