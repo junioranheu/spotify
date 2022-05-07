@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using TimeZoneConverter;
 
 namespace Biblioteca
@@ -224,6 +225,17 @@ namespace Biblioteca
         private static string PegarLetraAleatoria(Random rnd, string[] letters)
         {
             return letters[rnd.Next(0, letters.Length - 1)];
+        }
+
+        public static bool ValidarSenha(string senha)
+        {
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMinimum8Chars = new Regex(@".{8,}");
+
+            var isValidated = hasNumber.IsMatch(senha) && hasUpperChar.IsMatch(senha) && hasMinimum8Chars.IsMatch(senha);
+
+            return isValidated;
         }
     }
 }

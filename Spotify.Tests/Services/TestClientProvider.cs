@@ -2,7 +2,7 @@
 using System;
 using System.Net.Http;
 
-namespace Spotify.Tests
+namespace Spotify.Tests.Services
 {
     // Tutoriais de como criar um "test client provider", para que os testes unitários funcionem rodando em local host:
     // 1 - Tutorial de como criar o "test client provider": https://www.youtube.com/watch?v=p5l7x_pFjmI&ab_channel=DotNetCoreCentral;
