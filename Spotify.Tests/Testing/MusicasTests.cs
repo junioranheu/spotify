@@ -1,8 +1,12 @@
 using Newtonsoft.Json;
 using Spotify.Models;
 using Spotify.Tests.Services;
+using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -55,6 +59,44 @@ namespace Spotify.Tests.Testing
 
             using var client = _testProvider.Client;
             var response = await client.PostAsync($"{caminhoApi}/incrementarOuvinte?musicaId={id}", null);
+            response.EnsureSuccessStatusCode();
+
+            var contentStr = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.True(contentStr == "true");
+        }
+
+        [Fact]
+        public async Task Test_PostCriar()
+        {
+            // Autenticar;
+            var token = await _testProvider.AutenticarTesteUnitario();
+
+            // Ajustar client, objeto json, token, etc;
+            using var client = _testProvider.Client;
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            Musica m = new()
+            {
+                // MusicaId = xxx,
+                Nome = Biblioteca.Biblioteca.GerarPalavraAleatoria(10),
+                Ouvintes = 0,
+                DuracaoSegundos = Convert.ToInt32(Biblioteca.Biblioteca.NumeroAleatorio(3)),
+                DataLancamento = Biblioteca.Biblioteca.HorarioBrasilia(),
+                IsAtivo = 1,
+                DataRegistro = Biblioteca.Biblioteca.HorarioBrasilia(),
+
+                MusicasBandas = new List<MusicaBanda>(),
+                AlbunsMusicas = new List<AlbumMusica>(),
+                PlaylistsMusicas = new List<PlaylistMusica>()
+            };
+
+            var objetoJson = JsonConvert.SerializeObject(m);
+            var musica = new StringContent(objetoJson, Encoding.UTF8, "application/json");
+
+            // Teste;
+            var response = await client.PostAsync($"{caminhoApi}/criar", musica);
             response.EnsureSuccessStatusCode();
 
             var contentStr = await response.Content.ReadAsStringAsync();

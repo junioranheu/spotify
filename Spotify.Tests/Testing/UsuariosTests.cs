@@ -54,20 +54,5 @@ namespace Spotify.Tests.Testing
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.True(content != null);
         }
-
-        //[Fact]
-        //public async Task Test_PostIncrementarOuvinte()
-        //{
-        //    int id = 1;
-
-        //    using var client = _testProvider.Client;
-        //    var response = await client.PostAsync($"{caminhoApi}/incrementarOuvinte?musicaId={id}", null);
-        //    response.EnsureSuccessStatusCode();
-
-        //    var contentStr = await response.Content.ReadAsStringAsync();
-
-        //    Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        //    Assert.True(contentStr == "true");
-        //}
     }
 }

@@ -112,7 +112,6 @@ namespace Spotify.Controllers
             return resultado;
         }
 
-
         protected async Task<string> GerarToken(string? nomeUsuarioSistema, string? senha, ClaimsPrincipal? userClaim, HttpRequest? request, HttpResponse? response)
         {
             // Por via de regra, o método GerarToken deve receber um parâmetro preenchido e o outro nulo;
