@@ -39,20 +39,20 @@ namespace Spotify.Tests.Testing
             Assert.True(content?.Count > 0);
         }
 
-        [Fact]
-        public async Task Test_GetPorId()
+        [Theory]
+        [InlineData(1, HttpStatusCode.OK)]
+        [InlineData(2, HttpStatusCode.OK)]
+        [InlineData(100, HttpStatusCode.NotFound)]
+        public async Task Test_GetPorId(int usuarioId, HttpStatusCode resultadoEsperado)
         {
-            int id = 1;
-
             using var client = _testProvider.Client;
-            var response = await client.GetAsync($"{caminhoApi}/{id}");
-            response.EnsureSuccessStatusCode();
+            var response = await client.GetAsync($"{caminhoApi}/{usuarioId}");
+            // response.EnsureSuccessStatusCode();
 
             var contentStr = await response.Content.ReadAsStringAsync();
             var content = JsonConvert.DeserializeObject<Usuario>(contentStr);
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.True(content != null);
+            Assert.Equal(resultadoEsperado, response.StatusCode);
         }
     }
 }

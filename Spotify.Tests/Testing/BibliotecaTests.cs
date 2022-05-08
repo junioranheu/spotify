@@ -21,11 +21,14 @@ namespace Spotify.Tests.Testing
             Assert.True(HorarioBrasilia() > DateTime.MinValue);
         }
 
-        [Fact]
-        public void Test_Criptografar()
+        [Theory]
+        [InlineData("123")]
+        [InlineData("12345")]
+        [InlineData("teste")]
+        [InlineData("teste@")]
+        public void Test_Criptografar(string senha)
         {
-            string senhaTeste = "123";
-            Assert.True(!String.IsNullOrEmpty(Criptografar(senhaTeste)));
+            Assert.True(!String.IsNullOrEmpty(Criptografar(senha)));
         }
 
         [Fact]
