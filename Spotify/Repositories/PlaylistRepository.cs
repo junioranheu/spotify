@@ -1,66 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Spotify.Data;
-using Spotify.Interfaces;
-using Spotify.Models;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Spotify.API.Data;
+using Spotify.API.DTOs;
+using Spotify.API.Interfaces;
+using Spotify.API.Models;
 
-namespace Spotify.Repositories
+namespace Spotify.API.Repositories
 {
     public class PlaylistRepository : IPlaylistRepository
     {
         public readonly Context _context;
+        private readonly IMapper _map;
 
-        public PlaylistRepository(Context context)
+        public PlaylistRepository(Context context, IMapper map)
         {
             _context = context;
+            _map = map;
         }
 
-        public async Task<List<Playlist>> GetTodos()
+        public async Task? Adicionar(PlaylistDTO dto)
         {
-            var itens = await _context.Playlists.
-                Include(u => u.Usuarios).
-                Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
-                Include(u => u.Usuarios).
-                OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
+            Playlist playlist = _map.Map<Playlist>(dto);
 
-            return itens;
+            await _context.AddAsync(playlist);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<Playlist> GetPorId(int id)
+        public async Task? Atualizar(PlaylistDTO dto)
         {
-            var item = await _context.Playlists.
-                Include(u => u.Usuarios).
-                Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
-                Where(p => p.PlaylistId == id).AsNoTracking().FirstOrDefaultAsync();
+            Playlist playlist = _map.Map<Playlist>(dto);
 
-            return item;
+            _context.Update(playlist);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<int> PostCriar(Playlist playlist)
-        {
-            _context.Add(playlist);
-            var isOk = await _context.SaveChangesAsync();
-
-            return isOk;
-        }
-
-        public async Task<int> PostAtualizar(Playlist playlist)
-        {
-            int isOk;
-
-            try
-            {
-                _context.Update(playlist);
-                isOk = await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
-            return isOk;
-        }
-
-        public async Task<int> PostDeletar(int id)
+        public async Task? Deletar(int id)
         {
             var dados = await _context.Playlists.FindAsync(id);
 
@@ -70,14 +44,30 @@ namespace Spotify.Repositories
             }
 
             _context.Playlists.Remove(dados);
-            var isOk = await _context.SaveChangesAsync();
-
-            return isOk;
+            await _context.SaveChangesAsync();
         }
 
-        private async Task<bool> IsExiste(int id)
+        public async Task<List<PlaylistDTO>>? GetTodos()
         {
-            return await _context.Playlists.AnyAsync(p => p.PlaylistId == id);
+            var todos = await _context.Playlists.
+                        Include(u => u.Usuarios).
+                        Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                        Include(u => u.Usuarios).
+                        OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
+
+            List<PlaylistDTO> dto = _map.Map<List<PlaylistDTO>>(todos);
+            return dto;
+        }
+
+        public async Task<PlaylistDTO>? GetById(int id)
+        {
+            var byId = await _context.Playlists.
+                       Include(u => u.Usuarios).
+                       Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                       Where(p => p.PlaylistId == id).AsNoTracking().FirstOrDefaultAsync();
+
+            PlaylistDTO dto = _map.Map<PlaylistDTO>(byId);
+            return dto;
         }
     }
 }

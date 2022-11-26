@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static Spotify.Utils.Biblioteca;
 
-namespace Spotify.Models
+namespace Spotify.API.Models
 {
     public class BandaArtista
     {
@@ -15,7 +16,7 @@ namespace Spotify.Models
         public int ArtistaId { get; set; }
         public Artista? Artistas { get; set; }
 
-        public int IsAtivo { get; set; }
-        public DateTime DataRegistro { get; set; }
+        public bool IsAtivo { get; set; } = true;
+        public DateTime DataRegistro { get; set; } = HorarioBrasilia();
     }
 }

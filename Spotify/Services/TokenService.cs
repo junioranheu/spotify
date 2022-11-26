@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Spotify.Services
+namespace Spotify.API.Services
 {
     public static class TokenService
     {

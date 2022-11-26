@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Spotify.Models;
+using Spotify.API.DTOs;
+using Spotify.API.Models;
 using Spotify.Tests.Services;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -25,15 +27,23 @@ namespace Spotify.Tests.Testing
             using var client = _testProvider.Client;
 
             // Autenticar;
-            var token = await _testProvider.AutenticarTesteUnitario();
+            var autenticar = await client.PostAsJsonAsync("/api/Autenticar/login", new UsuarioSenhaDTO
+            {
+                NomeUsuarioSistema = "adm",
+                Senha = "123"
+            });
 
-            // Teste;
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            autenticar.EnsureSuccessStatusCode();
+            var autenticarContentStr = await autenticar.Content.ReadAsStringAsync(); // Conteúdo da resposta em string (JSON "bagunçado");
+            var autenticarContent = JsonConvert.DeserializeObject<UsuarioSenhaDTO>(autenticarContentStr); // Converter string para a classe em si;
+
+            // Teste unitário;
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autenticarContent?.Token);
             var response = await client.GetAsync($"{caminhoApi}/todos");
             response.EnsureSuccessStatusCode();
 
             var contentStr = await response.Content.ReadAsStringAsync(); // Conteúdo da resposta em string (JSON "bagunçado");
-            var content = JsonConvert.DeserializeObject<List<Usuario>>(contentStr); // Converter string para a classe em si;
+            var content = JsonConvert.DeserializeObject<List<UsuarioDTO>>(contentStr); // Converter string para a classe em si;
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.True(content?.Count > 0);
@@ -43,7 +53,7 @@ namespace Spotify.Tests.Testing
         [InlineData(1, HttpStatusCode.OK)]
         [InlineData(2, HttpStatusCode.OK)]
         [InlineData(100, HttpStatusCode.NotFound)]
-        public async Task Test_GetPorId(int usuarioId, HttpStatusCode resultadoEsperado)
+        public async Task Test_GetById(int usuarioId, HttpStatusCode resultadoEsperado)
         {
             using var client = _testProvider.Client;
             var response = await client.GetAsync($"{caminhoApi}/{usuarioId}");

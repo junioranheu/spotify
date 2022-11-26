@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Spotify.Interfaces;
-using Spotify.Models;
-using Spotify.Services;
+using Spotify.API.DTOs;
+using Spotify.API.Enums;
+using Spotify.API.Interfaces;
+using static Spotify.Utils.Biblioteca;
 
-namespace Spotify.Controllers
+namespace Spotify.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,90 +18,52 @@ namespace Spotify.Controllers
             _usuarios = usuarioRepository;
         }
 
-        [HttpGet("autenticar")]
-        public async Task<ActionResult<string>> Autenticar(string nomeUsuarioSistema, string senha)
+        [HttpPut("atualizar")]
+        [Authorize]
+        public async Task<ActionResult<UsuarioDTO>> Atualizar(UsuarioSenhaDTO dto)
         {
-            // Verificar se o usuário existe;
-            string caminho = String.Format("/api/Usuarios/verificarEmailSenha?nomeUsuarioSistema={0}&senha={1}", nomeUsuarioSistema, senha);
-            var resultado = await GetAPI(caminho, null);
-            Usuario? usu = JsonConvert.DeserializeObject<Usuario>(resultado);
+            var isMesmoUsuario = await IsUsuarioSolicitadoMesmoDoToken(dto.UsuarioId);
 
-            // Verifica se o usuário existe;
-            if (usu == null)
+            if (!isMesmoUsuario)
             {
-                return NotFound("Usuário ou senha inválidos");
+                UsuarioDTO erro = new()
+                {
+                    Erro = true,
+                    CodigoErro = (int)CodigosErrosEnum.NaoAutorizado,
+                    MensagemErro = GetDescricaoEnum(CodigosErrosEnum.NaoAutorizado)
+                };
+
+                return erro;
             }
 
-            // Gera o Token;
-            var token = TokenService.ServicoGerarToken(usu.UsuarioId, usu.NomeUsuarioSistema, usu.UsuarioTipoId);
-
-            return token;
-        }
-
-        [HttpGet("autenticarTesteUnitario")]
-        public ActionResult<string> AutenticarTesteUnitario()
-        {
-            // Gera o Token;
-            var token = TokenService.ServicoGerarToken(1, "adm", 1);
-
-            return token;
+            var usuario = await _usuarios.Atualizar(dto);
+            return Ok(usuario);
         }
 
         [HttpGet("todos")]
-        [Authorize]
-        public async Task<ActionResult<List<Usuario>>> GetTodos()
+        public async Task<ActionResult<List<UsuarioDTO>>> GetTodos()
         {
             var itens = await _usuarios.GetTodos();
 
-            // Esconder alguns atributos;
-            foreach (var item in itens)
+            if (itens == null)
             {
-                item.Senha = "";
+                return NotFound();
             }
 
             return itens;
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> GetPorId(int id)
+        public async Task<ActionResult<UsuarioDTO>> GetById(int id)
         {
-            var item = await _usuarios.GetPorId(id);
+            var byId = await _usuarios.GetById(id);
 
-            if (item == null)
+            if (byId == null)
             {
                 return NotFound();
             }
 
-            // Esconder alguns atributos;
-            item.Senha = "";
-
-            return item;
-        }
-
-        [HttpGet("verificarEmailSenha")]
-        public async Task<ActionResult<Usuario>> GetVerificarEmailSenha(string nomeUsuarioSistema, string senha)
-        {
-            var usuarioBd = await _usuarios.GetVerificarEmailSenha(nomeUsuarioSistema, senha);
-
-            if (usuarioBd != null)
-            {
-                Usuario usu = new()
-                {
-                    UsuarioId = usuarioBd.UsuarioId,
-                    NomeCompleto = usuarioBd.NomeCompleto,
-                    NomeUsuarioSistema = usuarioBd.NomeUsuarioSistema,
-                    Email = usuarioBd.Email,
-                    UsuarioTipoId = usuarioBd.UsuarioTipoId,
-                    Foto = usuarioBd.Foto,
-                    DataOnline = usuarioBd.DataOnline
-                };
-
-                return usu;
-            }
-            else
-            {
-                return null;
-            }
+            return byId;
         }
     }
 }

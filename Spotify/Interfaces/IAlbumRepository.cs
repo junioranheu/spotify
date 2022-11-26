@@ -1,13 +1,13 @@
-﻿using Spotify.Models;
+﻿using Spotify.API.DTOs;
 
-namespace Spotify.Interfaces
+namespace Spotify.API.Interfaces
 {
     public interface IAlbumRepository
     {
-        Task<List<Album>> GetTodos();
-        Task<Album> GetPorId(int id);
-        Task<int> PostCriar(Album album);
-        Task<int> PostAtualizar(Album album);
-        Task<int> PostDeletar(int id);
+        Task? Adicionar(AlbumDTO dto);
+        Task? Atualizar(AlbumDTO dto);
+        Task? Deletar(int id);
+        Task<List<AlbumDTO>>? GetTodos();
+        Task<AlbumDTO>? GetById(int id);
     }
 }

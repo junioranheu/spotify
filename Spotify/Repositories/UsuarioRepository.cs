@@ -1,50 +1,93 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Spotify.Data;
-using Spotify.Interfaces;
-using Spotify.Models;
-using static Biblioteca.Biblioteca;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Spotify.API.Data;
+using Spotify.API.DTOs;
+using Spotify.API.Interfaces;
+using Spotify.API.Models;
 
-namespace Spotify.Repositories
+namespace Spotify.API.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
         public readonly Context _context;
+        private readonly IMapper _map;
 
-        public UsuarioRepository(Context context)
+        public UsuarioRepository(Context context, IMapper map)
         {
+            _map = map;
             _context = context;
         }
 
-        public async Task<List<Usuario>> GetTodos()
+        public async Task<UsuarioDTO>? Adicionar(UsuarioSenhaDTO dto)
         {
-            var itens = await _context.Usuarios.
-                Include(ut => ut.UsuarioTipos).
-                Include(ui => ui.UsuariosInformacoes).
-                OrderBy(ui => ui.UsuarioId).AsNoTracking().ToListAsync();
+            Usuario usuario = _map.Map<Usuario>(dto);
 
-            return itens;
+            await _context.AddAsync(usuario);
+            await _context.SaveChangesAsync();
+
+            UsuarioDTO usuarioDTO = _map.Map<UsuarioDTO>(usuario);
+            return usuarioDTO;
         }
 
-        public async Task<Usuario> GetPorId(int id)
+        public async Task<UsuarioDTO>? Atualizar(UsuarioSenhaDTO dto)
         {
-            var item = await _context.Usuarios.
-                Include(ut => ut.UsuarioTipos).
-                Include(ui => ui.UsuariosInformacoes).
-                Where(ui => ui.UsuarioId == id).AsNoTracking().FirstOrDefaultAsync();
+            Usuario usuario = _map.Map<Usuario>(dto);
+            UsuarioDTO usuarioDTO = _map.Map<UsuarioDTO>(dto);
 
-            return item;
+            _context.Update(usuario);
+            await _context.SaveChangesAsync();
+            return usuarioDTO;
         }
 
-        public async Task<Usuario> GetVerificarEmailSenha(string nomeUsuarioSistema, string senha)
+        public async Task? Deletar(int id)
         {
-            string senhaCriptografada = Criptografar(senha);
+            var dados = await _context.Usuarios.FindAsync(id);
 
-            var usuarioBd = await _context.Usuarios.
-                Include(ui => ui.UsuariosInformacoes).
-                AsNoTracking().
-                FirstOrDefaultAsync(l => (l.NomeUsuarioSistema == nomeUsuarioSistema || l.Email == nomeUsuarioSistema) && l.Senha == senhaCriptografada);
+            if (dados == null)
+            {
+                throw new Exception("Registro com o id " + id + " não foi encontrado");
+            }
 
-            return usuarioBd;
+            _context.Usuarios.Remove(dados);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<UsuarioDTO>>? GetTodos()
+        {
+            var todos = await _context.Usuarios.
+                        Include(ut => ut.UsuariosTipos).
+                        OrderBy(ui => ui.UsuarioId).AsNoTracking().ToListAsync();
+
+            List<UsuarioDTO> dto = _map.Map<List<UsuarioDTO>>(todos);
+            return dto;
+        }
+
+        public async Task<UsuarioDTO>? GetById(int id)
+        {
+            var byId = await _context.Usuarios.
+                       Include(ut => ut.UsuariosTipos).
+                       Where(ui => ui.UsuarioId == id).AsNoTracking().FirstOrDefaultAsync();
+
+            UsuarioDTO dto = _map.Map<UsuarioDTO>(byId);
+            return dto;
+        }
+
+        public async Task<UsuarioSenhaDTO>? GetByEmailOuUsuarioSistema(string? email, string? nomeUsuarioSistema)
+        {
+            var byEmail = await _context.Usuarios.
+                Where(e => e.Email == email).AsNoTracking().FirstOrDefaultAsync();
+
+            if (byEmail is null)
+            {
+                var byNomeUsuario = await _context.Usuarios.
+                                    Where(n => n.NomeUsuarioSistema == nomeUsuarioSistema).AsNoTracking().FirstOrDefaultAsync();
+
+                UsuarioSenhaDTO dto1 = _map.Map<UsuarioSenhaDTO>(byNomeUsuario);
+                return dto1;
+            }
+
+            UsuarioSenhaDTO dto2 = _map.Map<UsuarioSenhaDTO>(byEmail);
+            return dto2;
         }
     }
 }

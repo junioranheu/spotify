@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Biblioteca\Biblioteca.csproj" />
-    <ProjectReference Include="..\Spotify\Spotify.csproj" />
+    <ProjectReference Include="..\Biblioteca\Spotify.Utils.csproj" />
+    <ProjectReference Include="..\Spotify\Spotify.API.csproj" />
   </ItemGroup>
 
 </Project>

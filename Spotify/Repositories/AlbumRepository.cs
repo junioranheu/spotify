@@ -1,65 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Spotify.Data;
-using Spotify.Interfaces;
-using Spotify.Models;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Spotify.API.Data;
+using Spotify.API.DTOs;
+using Spotify.API.Interfaces;
+using Spotify.API.Models;
 
-namespace Spotify.Repositories
+namespace Spotify.API.Repositories
 {
     public class AlbumRepository : IAlbumRepository
     {
         public readonly Context _context;
+        private readonly IMapper _map;
 
-        public AlbumRepository(Context context)
+        public AlbumRepository(Context context, IMapper map)
         {
             _context = context;
+            _map = map;
         }
 
-        public async Task<List<Album>> GetTodos()
+        public async Task? Adicionar(AlbumDTO dto)
         {
-            var itens = await _context.Albuns.
-                Include(b => b.Bandas).
-                Include(a => a.AlbunsMusicas).ThenInclude(m => m.Musicas).
-                OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
+            Album album = _map.Map<Album>(dto);
 
-            return itens;
+            await _context.AddAsync(album);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<Album> GetPorId(int id)
+        public async Task? Atualizar(AlbumDTO dto)
         {
-            var item = await _context.Albuns.
-                Include(b => b.Bandas).
-                Include(a => a.AlbunsMusicas).ThenInclude(m => m.Musicas).
-                Where(m => m.AlbumId == id).AsNoTracking().FirstOrDefaultAsync();
+            Album album = _map.Map<Album>(dto);
 
-            return item;
+            _context.Update(album);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<int> PostCriar(Album album)
-        {
-            _context.Add(album);
-            var isOk = await _context.SaveChangesAsync();
-
-            return isOk;
-        }
-
-        public async Task<int> PostAtualizar(Album album)
-        {
-            int isOk;
-
-            try
-            {
-                _context.Update(album);
-                isOk = await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
-            return isOk;
-        }
-
-        public async Task<int> PostDeletar(int id)
+        public async Task? Deletar(int id)
         {
             var dados = await _context.Albuns.FindAsync(id);
 
@@ -69,14 +44,29 @@ namespace Spotify.Repositories
             }
 
             _context.Albuns.Remove(dados);
-            var isOk = await _context.SaveChangesAsync();
-
-            return isOk;
+            await _context.SaveChangesAsync();
         }
 
-        private async Task<bool> IsExiste(int id)
+        public async Task<List<AlbumDTO>>? GetTodos()
         {
-            return await _context.Albuns.AnyAsync(m => m.AlbumId == id);
+            var todos = await _context.Albuns.
+                        Include(b => b.Bandas).
+                        Include(a => a.AlbunsMusicas).ThenInclude(m => m.Musicas).
+                        OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
+
+            List<AlbumDTO> dto = _map.Map<List<AlbumDTO>>(todos);
+            return dto;
+        }
+
+        public async Task<AlbumDTO>? GetById(int id)
+        {
+            var byId = await _context.Albuns.
+                       Include(b => b.Bandas).
+                       Include(a => a.AlbunsMusicas).ThenInclude(m => m.Musicas).
+                       Where(m => m.AlbumId == id).AsNoTracking().FirstOrDefaultAsync();
+
+            AlbumDTO dto = _map.Map<AlbumDTO>(byId);
+            return dto;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Spotify.Services
+﻿namespace Spotify.API.Services
 {
     public static class Chave
     {

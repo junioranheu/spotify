@@ -1,16 +1,17 @@
-﻿using Spotify.Models;
+﻿using Spotify.API.DTOs;
 
-namespace Spotify.Interfaces
+namespace Spotify.API.Interfaces
 {
     public interface IMusicaRepository
     {
-        Task<List<Musica>> GetTodos();
-        Task<Musica> GetPorId(int id);
-        Task<List<Musica>> GetPorPlaylist(int id);
-        Task<int> PostCriar(Musica musica);
-        Task<int> PostAtualizar(Musica musica);
-        Task<int> PostDeletar(int id);
-        Task<int> PostIncrementarOuvinte(int musicaId);
-        Task<List<Musica>> GetPorPalavraChave(string palavraChave);
+
+        Task? Adicionar(MusicaDTO dto);
+        Task? Atualizar(MusicaDTO dto);
+        Task? Deletar(int id);
+        Task<List<MusicaDTO>>? GetTodos();
+        Task<MusicaDTO>? GetById(int id);
+        Task<List<MusicaDTO>>? GetPorPlaylist(int id);
+        Task<int>? PostIncrementarOuvinte(int id);
+        Task<List<MusicaDTO>>? GetPorPalavraChave(string palavraChave);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Spotify.Controllers
+namespace Spotify.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

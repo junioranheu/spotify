@@ -1,11 +1,13 @@
-﻿using Spotify.Models;
+﻿using Spotify.API.DTOs;
 
-namespace Spotify.Interfaces
+namespace Spotify.API.Interfaces
 {
     public interface IUsuarioRepository
     {
-        Task<List<Usuario>> GetTodos();
-        Task<Usuario> GetPorId(int id);
-        Task<Usuario> GetVerificarEmailSenha(string nomeUsuarioSistema, string senha);
+        Task<UsuarioDTO>? Adicionar(UsuarioSenhaDTO dto);
+        Task<UsuarioDTO>? Atualizar(UsuarioSenhaDTO dto);
+        Task<List<UsuarioDTO>>? GetTodos();
+        Task<UsuarioDTO>? GetById(int id);
+        Task<UsuarioSenhaDTO>? GetByEmailOuUsuarioSistema(string? email, string? nomeUsuarioSistema);
     }
 }
