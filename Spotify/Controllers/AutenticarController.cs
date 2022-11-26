@@ -4,6 +4,8 @@ using Spotify.API.Interfaces;
 
 namespace Spotify.API.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AutenticarController : BaseController<AutenticarController>
     {
         private readonly IAutenticarService _autenticarService;
