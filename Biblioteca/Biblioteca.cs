@@ -157,5 +157,18 @@ namespace Spotify.Utils
             DescriptionAttribute attribute = CustomAttributeExtensions.GetCustomAttribute<DescriptionAttribute>(memInfo[0]);
             return attribute.Description;
         }
+
+        // Pegar o tipo da extensão de um arquivo;
+        public static string GetMimeType(string caminhoArquivo)
+        {
+            string mimeType = "application/unknown";
+            string ext = System.IO.Path.GetExtension(caminhoArquivo).ToLower();
+            Microsoft.Win32.RegistryKey regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+
+            if (regKey != null && regKey.GetValue("Content Type") != null)
+                mimeType = regKey.GetValue("Content Type").ToString();
+
+            return mimeType;
+        }
     }
 }
