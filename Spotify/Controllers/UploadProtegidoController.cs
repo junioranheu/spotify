@@ -52,7 +52,7 @@ namespace Spotify.API.Controllers
             return NotFound();
         }
 
-        // Como "stremar" um arquivo - https://stackoverflow.com/a/56875627;
+        // Como "streamar" um arquivo - https://stackoverflow.com/a/56875627;
         [HttpGet("getArquivoProtegidoStream/nomePasta={nomePasta}&nomeArquivo={nomeArquivo}")]
         public async Task<ActionResult> GetArquivoProtegidoStream(string nomePasta, string nomeArquivo)
         {
