@@ -23,30 +23,28 @@ namespace Spotify.API.Controllers
 
             if (!String.IsNullOrEmpty(caminho))
             {
-                if (System.IO.File.Exists(caminho))
-                {
-                    Byte[] bytes = await System.IO.File.ReadAllBytesAsync(caminho);
-                    string arquivoBase64 = Convert.ToBase64String(bytes);
-                    string extensaoArquivo = GetMimeType(caminho);
-
-                    if (String.IsNullOrEmpty(arquivoBase64) || String.IsNullOrEmpty(extensaoArquivo))
-                    {
-                        return Problem();
-                    }
-
-                    // Gerar o base64 final;
-                    string arquivoBase64Final = $"data:{extensaoArquivo};base64,{arquivoBase64}";
-
-                    // Parar o Stopwatch;
-                    watch.Stop();
-                    var elapsedMs = watch.ElapsedMilliseconds;
-
-                    return new Tuple<string, string>(arquivoBase64Final, elapsedMs.ToString());
-                }
-                else
+                if (!System.IO.File.Exists(caminho))
                 {
                     return NotFound();
                 }
+
+                Byte[] bytes = await System.IO.File.ReadAllBytesAsync(caminho);
+                string arquivoBase64 = Convert.ToBase64String(bytes);
+                string extensaoArquivo = GetMimeType(caminho);
+
+                if (String.IsNullOrEmpty(arquivoBase64) || String.IsNullOrEmpty(extensaoArquivo))
+                {
+                    return Problem();
+                }
+
+                // Gerar o base64 final;
+                string arquivoBase64Final = $"data:{extensaoArquivo};base64,{arquivoBase64}";
+
+                // Parar o Stopwatch;
+                watch.Stop();
+                var elapsedMs = watch.ElapsedMilliseconds;
+
+                return new Tuple<string, string>(arquivoBase64Final, elapsedMs.ToString());
             }
 
             return NotFound();
@@ -61,21 +59,25 @@ namespace Spotify.API.Controllers
 
             if (!String.IsNullOrEmpty(caminho))
             {
-                if (System.IO.File.Exists(caminho))
-                {
-                    Byte[] bytes = await System.IO.File.ReadAllBytesAsync(caminho);
-
-                    if (bytes.Length == 0)
-                    {
-                        return Problem();
-                    }
-
-                    return new FileContentResult(bytes, "application/octet-stream");
-                }
-                else
+                if (!System.IO.File.Exists(caminho))
                 {
                     return NotFound();
                 }
+
+                Byte[] bytes = await System.IO.File.ReadAllBytesAsync(caminho);
+
+                if (bytes.Length == 0)
+                {
+                    return Problem();
+                }
+
+                var conteudo = new FileContentResult(bytes, contentType: "application/octet-stream")
+                {
+                    EnableRangeProcessing = true,
+                    FileDownloadName = nomeArquivo
+                };
+
+                return conteudo;
             }
 
             return NotFound();
