@@ -73,9 +73,9 @@ namespace Spotify.API.Controllers
             return conteudo;
         }
 
-        // Como "streamar" um arquivo - https://stackoverflow.com/a/56875627;
-        [HttpGet("getArquivoProtegidoStream2/nomePasta={nomePasta}&nomeArquivo={nomeArquivo}")]
-        public IActionResult GetArquivoProtegidoStream2(string nomePasta, string nomeArquivo)
+        // Como "streamar" um arquivo - https://stackoverflow.com/a/59209398;
+        [HttpGet("getArquivoProtegidoStreamBuffer/nomePasta={nomePasta}&nomeArquivo={nomeArquivo}")]
+        public IActionResult getArquivoProtegidoStreamBuffer(string nomePasta, string nomeArquivo)
         {
             string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
             string caminho = $"{wwwPath}/UploadProtegido/{nomePasta}/{nomeArquivo}";
@@ -85,7 +85,10 @@ namespace Spotify.API.Controllers
                 return NotFound();
             }
 
-            return File(System.IO.File.OpenRead(caminho), "audio/mpeg", enableRangeProcessing: true);
+            var bufferSize = 1024;
+            var fileStream = new FileStream(caminho, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize);
+
+            return File(fileStream, "audio/mpeg", enableRangeProcessing: true);
         }
 
         // https://stackoverflow.com/questions/66505799/streaming-a-video-in-chunks-to-the-client (Só funciona no monolítico);
