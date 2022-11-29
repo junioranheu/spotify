@@ -88,6 +88,6 @@ namespace Spotify.API.Controllers
             return File(System.IO.File.OpenRead(caminho), "audio/mpeg", enableRangeProcessing: true);
         }
 
-        // https://stackoverflow.com/questions/5659189/how-to-split-a-large-file-into-chunks-in-c (Só funciona no monolítico);
+        // https://stackoverflow.com/questions/66505799/streaming-a-video-in-chunks-to-the-client (Só funciona no monolítico);
     }
 }
