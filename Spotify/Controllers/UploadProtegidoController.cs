@@ -66,7 +66,7 @@ namespace Spotify.API.Controllers
 
             var conteudo = new FileContentResult(bytes, contentType: "application/octet-stream")
             {
-                EnableRangeProcessing = true,
+                EnableRangeProcessing = false,
                 FileDownloadName = nomeArquivo
             };
 
