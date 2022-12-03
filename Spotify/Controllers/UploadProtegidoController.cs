@@ -75,7 +75,7 @@ namespace Spotify.API.Controllers
 
         // Como "streamar" um arquivo - https://stackoverflow.com/a/59209398;
         [HttpGet("getArquivoProtegidoStreamBuffer/nomePasta={nomePasta}&nomeArquivo={nomeArquivo}")]
-        public IActionResult getArquivoProtegidoStreamBuffer(string nomePasta, string nomeArquivo)
+        public IActionResult GetArquivoProtegidoStreamBuffer(string nomePasta, string nomeArquivo)
         {
             string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
             string caminho = $"{wwwPath}/UploadProtegido/{nomePasta}/{nomeArquivo}";
@@ -85,8 +85,9 @@ namespace Spotify.API.Controllers
                 return NotFound();
             }
 
-            var bufferSize = 1024;
-            var fileStream = new FileStream(caminho, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize);
+            int mb = 1;
+            int bufferSize = mb * 1024;
+            FileStream fileStream = new(caminho, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize, useAsync: true);
 
             return File(fileStream, "audio/mpeg", enableRangeProcessing: true);
         }
