@@ -4,7 +4,7 @@ using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.DTOs
 {
-    public class AlbumDTO
+    public class AlbumDTO : _RetornoApiDTO
     {
         [Key]
         public int AlbumId { get; set; }

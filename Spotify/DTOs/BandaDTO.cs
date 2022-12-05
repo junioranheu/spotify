@@ -3,7 +3,7 @@ using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.DTOs
 {
-    public class BandaDTO
+    public class BandaDTO : _RetornoApiDTO
     {
         [Key]
         public int BandaId { get; set; }

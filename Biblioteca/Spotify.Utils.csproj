@@ -1,18 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediaToolkit" Version="1.1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-    <PackageReference Include="TimeZoneConverter" Version="6.0.1" />
-    <PackageReference Include="VideoLibrary" Version="3.2.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MediaToolkit" Version="1.1.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+		<PackageReference Include="TimeZoneConverter" Version="6.0.1" />
+		<PackageReference Include="VideoLibrary" Version="3.2.2" />
+	</ItemGroup>
+
+	<!-- Por algum motivo misterioso foi necessário adicionar essa linha para o tipo IFormFile funcionar em Biblioteca.cs: https://stackoverflow.com/questions/58904234/iformfile-not-load-type-microsoft-aspnetcore-http-internal-formfile-from-assemb -->
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 
 </Project>

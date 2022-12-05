@@ -4,7 +4,7 @@ namespace Spotify.API.Interfaces
 {
     public interface IMusicaRepository
     {
-        Task<int>? Adicionar(MusicaAdicionarDTO dto);
+        Task<MusicaDTO>? Adicionar(MusicaAdicionarDTO dto);
         Task? Atualizar(MusicaDTO dto);
         Task? Deletar(int id);
         Task<List<MusicaDTO>>? GetTodos();

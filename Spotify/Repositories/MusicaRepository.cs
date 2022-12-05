@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Spotify.API.Data;
 using Spotify.API.DTOs;
+using Spotify.API.Enums;
 using Spotify.API.Interfaces;
 using Spotify.API.Models;
+using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.Repositories
 {
@@ -18,14 +20,23 @@ namespace Spotify.API.Repositories
             _map = map;
         }
 
-        public async Task<int> Adicionar(MusicaAdicionarDTO dto)
+        public async Task<MusicaDTO> Adicionar(MusicaAdicionarDTO dto)
         {
-            Musica musica = _map.Map<Musica>(dto);
+            try
+            {
+                Musica musica = _map.Map<Musica>(dto);
 
-            await _context.AddAsync(musica);
-            await _context.SaveChangesAsync();
+                await _context.AddAsync(musica);
+                await _context.SaveChangesAsync();
 
-            return musica.MusicaId;
+                MusicaDTO musicaDTO = _map.Map<MusicaDTO>(musica);
+                return musicaDTO;
+            }
+            catch (Exception)
+            {
+                MusicaDTO erro = new() { Erro = true, CodigoErro = (int)CodigosErrosEnum.ErroInterno, MensagemErro = GetDescricaoEnum(CodigosErrosEnum.ErroInterno) };
+                return erro;
+            }
         }
 
         public async Task? Atualizar(MusicaDTO dto)

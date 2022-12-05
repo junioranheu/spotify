@@ -51,5 +51,15 @@ namespace Spotify.API.Enums
 
         [Description("Refresh token inválido")]
         RefreshTokenInvalido = 411,
+
+        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 500 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+        [Description("Processo abortado pois houve um erro interno")]
+        ErroInterno = 500,
+
+        [Description("Processo abortado pois houve um erro interno ao subir seu arquivo de música")]
+        ErroInternoUploadArquivo = 501,
+
+        [Description("Processo abortado pois houve um erro interno ao converter o vídeo do Youtube")]
+        ErroInternoConversaoYoutube = 502,
     }
 }

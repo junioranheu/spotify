@@ -11,30 +11,47 @@ namespace Spotify.API.Controllers
     [ApiController]
     public class MusicasController : BaseController<MusicasController>
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IMusicaRepository _musicaRepository;
 
-        public MusicasController(IMusicaRepository musicaRepository)
+        public MusicasController(IWebHostEnvironment webHostEnvironment, IMusicaRepository musicaRepository)
         {
+            _webHostEnvironment = webHostEnvironment;
             _musicaRepository = musicaRepository;
         }
 
         [HttpPost("adicionar")]
         [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
-        public async Task<ActionResult<bool>> Adicionar(MusicaAdicionarDTO dto)
+        public async Task<ActionResult<MusicaDTO>> Adicionar(MusicaAdicionarDTO dto)
         {
-            var newMusicaId = await _musicaRepository.Adicionar(dto);
+            var newMusica = await _musicaRepository.Adicionar(dto);
 
             // Verificar se o usuário inseriu a música via arquivo ou URL do youtube;
             if (!String.IsNullOrEmpty(dto.Mp3Base64))
             {
                 var file = Base64ToFile(dto.Mp3Base64);
+                var resultadoUploadArquivo = await UparArquivo(file, $"{newMusica.MusicaId}.mp3", GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), $"{newMusica.MusicaId}.mp3", _webHostEnvironment);
+
+                if (!resultadoUploadArquivo.Item1)
+                {
+                    newMusica.Erro = true;
+                    newMusica.CodigoErro = (int)CodigosErrosEnum.ErroInternoUploadArquivo;
+                    newMusica.MensagemErro = GetDescricaoEnum(CodigosErrosEnum.ErroInternoUploadArquivo);
+                }
             }
             else if (!String.IsNullOrEmpty(dto.UrlYoutube))
             {
-                bool teste = await YoutubeToMp3(GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), dto.UrlYoutube, newMusicaId.ToString());
+                bool resultadoYoutubeToMp3 = await YoutubeToMp3(GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), dto.UrlYoutube, newMusica?.MusicaId.ToString());
+
+                if (!resultadoYoutubeToMp3)
+                {
+                    newMusica.Erro = true;
+                    newMusica.CodigoErro = (int)CodigosErrosEnum.ErroInternoConversaoYoutube;
+                    newMusica.MensagemErro = GetDescricaoEnum(CodigosErrosEnum.ErroInternoConversaoYoutube);
+                }
             }
 
-            return Ok(true);
+            return Ok(newMusica);
         }
 
         [HttpPut("atualizar")]

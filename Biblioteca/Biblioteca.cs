@@ -1,7 +1,6 @@
 ﻿using MediaToolkit;
 using MediaToolkit.Model;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -208,13 +207,27 @@ namespace Spotify.Utils
             });
         }
 
+        // Converter IFormFile para bytes[]: https://stackoverflow.com/questions/36432028/how-to-convert-a-file-into-byte-array-in-memory;
+        public static async Task<byte[]> IFormFileParaBytes(IFormFile formFile)
+        {
+            await using var memoryStream = new MemoryStream();
+            await formFile.CopyToAsync(memoryStream);
+
+            return memoryStream.ToArray();
+        }
+
         // Converter Base64 para arquivo;
         public static IFormFile Base64ToFile(string base64)
         {
             List<IFormFile> formFiles = new();
-
             string split = ";base64,";
-            string normalizarBase64 = base64.Substring(base64.IndexOf(split) + split.Length);
+            string normalizarBase64 = base64;
+
+            if (base64.Contains(split))
+            {
+                normalizarBase64 = base64.Substring(base64.IndexOf(split) + split.Length);
+            }
+
             byte[] bytes = Convert.FromBase64String(normalizarBase64);
             MemoryStream stream = new(bytes);
 
