@@ -3,6 +3,7 @@ using Spotify.API.DTOs;
 using Spotify.API.Enums;
 using Spotify.API.Filters;
 using Spotify.API.Interfaces;
+using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.Controllers
 {
@@ -22,6 +23,10 @@ namespace Spotify.API.Controllers
         public async Task<ActionResult<bool>> Adicionar(MusicaDTO dto)
         {
             await _musicaRepository.Adicionar(dto);
+
+            // xxxxxxxxxxxxx
+            bool teste = await YoutubeToMp3("UploadProtegido/teste/", "https://www.youtube.com/watch?v=uuFfyIZ8qWI&t=3s&ab_channel=BatalhadoTanque", id.ToString());
+
             return Ok(true);
         }
 

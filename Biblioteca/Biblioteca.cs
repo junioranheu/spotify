@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MediaToolkit;
+using MediaToolkit.Model;
+using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
@@ -6,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using TimeZoneConverter;
+using VideoLibrary;
 
 namespace Spotify.Utils
 {
@@ -169,6 +172,38 @@ namespace Spotify.Utils
                 mimeType = regKey.GetValue("Content Type").ToString();
 
             return mimeType;
+        }
+
+        // Salvar vídeo do Youtube como .mp3: https://stackoverflow.com/questions/39877884/c-sharp-download-the-sound-of-a-youtube-video;
+        // Foi necessário instalar o pacote "System.Configuration.ConfigurationManager" também;
+        public static async Task<bool> YoutubeToMp3(string pastaDestino, string urlVideo, string nomeArquivoMp3)
+        {
+            return await Task.Run(() =>
+            {
+                try
+                {
+                    // Baixar arquivo do Youtube em formato .mp4;
+                    var youtube = YouTube.Default;
+                    var vid = youtube.GetVideo(urlVideo);
+                    File.WriteAllBytesAsync($"{pastaDestino}{vid.FullName}", vid.GetBytes());
+
+                    // Converter arquivo de .mp4 para .mp3;
+                    var inputFile = new MediaFile { Filename = $"{pastaDestino}{vid.FullName}" };
+                    var outputFile = new MediaFile { Filename = $"{pastaDestino}{nomeArquivoMp3}.mp3" };
+                    using var engine = new Engine();
+                    engine.GetMetadata(inputFile);
+                    engine.Convert(inputFile, outputFile);
+
+                    // Deletar arquivo .MP4 (inicial);
+                    File.Delete($"{pastaDestino}{vid.FullName}");
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+
+                return true;
+            });
         }
     }
 }
