@@ -19,13 +19,20 @@ namespace Spotify.API.Controllers
         }
 
         [HttpPost("adicionar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
-        public async Task<ActionResult<bool>> Adicionar(MusicaDTO dto)
+        [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
+        public async Task<ActionResult<bool>> Adicionar(MusicaAdicionarDTO dto)
         {
-            await _musicaRepository.Adicionar(dto);
+            var newMusicaId = await _musicaRepository.Adicionar(dto);
 
-            // xxxxxxxxxxxxx
-            bool teste = await YoutubeToMp3("UploadProtegido/xxxxxxxxxxxxxxxxx/", "https://www.youtube.com/watch?v=uuFfyIZ8qWI&t=3s&ab_channel=BatalhadoTanque", dto.MusicaId.ToString());
+            // Verificar se o usuário inseriu a música via arquivo ou URL do youtube;
+            if (!String.IsNullOrEmpty(dto.Mp3Base64))
+            {
+                var file = Base64ToFile(dto.Mp3Base64);
+            }
+            else if (!String.IsNullOrEmpty(dto.UrlYoutube))
+            {
+                bool teste = await YoutubeToMp3(GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), dto.UrlYoutube, newMusicaId.ToString());
+            }
 
             return Ok(true);
         }

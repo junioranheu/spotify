@@ -17,12 +17,13 @@ namespace Spotify.API.AutoMapper
             CreateMap<Usuario, UsuarioSenhaDTO>().ReverseMap();
             CreateMap<UsuarioSenhaDTO, UsuarioDTO>().ReverseMap();
 
-            // Outros;
+            // Outros (Artista, Banda, Musica);
             CreateMap<Artista, ArtistaDTO>().ReverseMap();
             CreateMap<BandaArtista, BandaArtistaDTO>().ReverseMap();
             CreateMap<Banda, BandaDTO>().ReverseMap();
             CreateMap<MusicaBanda, MusicaBandaDTO>().ReverseMap();
             CreateMap<Musica, MusicaDTO>().ReverseMap();
+            CreateMap<Musica, MusicaAdicionarDTO>().ReverseMap();
 
             // Albuns e afins;
             CreateMap<Album, AlbumDTO>().ReverseMap();

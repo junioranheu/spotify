@@ -18,12 +18,14 @@ namespace Spotify.API.Repositories
             _map = map;
         }
 
-        public async Task? Adicionar(MusicaDTO dto)
+        public async Task<int> Adicionar(MusicaAdicionarDTO dto)
         {
             Musica musica = _map.Map<Musica>(dto);
 
             await _context.AddAsync(musica);
             await _context.SaveChangesAsync();
+
+            return musica.MusicaId;
         }
 
         public async Task? Atualizar(MusicaDTO dto)
