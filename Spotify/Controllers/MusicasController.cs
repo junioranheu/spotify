@@ -25,7 +25,7 @@ namespace Spotify.API.Controllers
             await _musicaRepository.Adicionar(dto);
 
             // xxxxxxxxxxxxx
-            bool teste = await YoutubeToMp3("UploadProtegido/teste/", "https://www.youtube.com/watch?v=uuFfyIZ8qWI&t=3s&ab_channel=BatalhadoTanque", id.ToString());
+            bool teste = await YoutubeToMp3("UploadProtegido/teste/", "https://www.youtube.com/watch?v=uuFfyIZ8qWI&t=3s&ab_channel=BatalhadoTanque", dto.MusicaId.ToString());
 
             return Ok(true);
         }
