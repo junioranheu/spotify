@@ -19,7 +19,7 @@ namespace Spotify.API.Data
             }
         }
 
-        public static async Task Seed(Context context, DateTime dataAgora)
+        private static async Task Seed(Context context, DateTime dataAgora)
         {
             #region seed_usuarios
             if (!await context.UsuariosTipos.AnyAsync())
