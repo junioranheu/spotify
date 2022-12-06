@@ -62,7 +62,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpGet("byUsuarioId/{id}")]
-        public async Task<ActionResult<PlaylistDTO>> GetByUsuarioId(int id)
+        public async Task<ActionResult<List<PlaylistDTO>>> GetByUsuarioId(int id)
         {
             var porId = await _playlistRepository.GetByUsuarioId(id);
 

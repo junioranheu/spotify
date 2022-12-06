@@ -70,14 +70,14 @@ namespace Spotify.API.Repositories
             return dto;
         }
 
-        public async Task<PlaylistDTO>? GetByUsuarioId(int id)
+        public async Task<List<PlaylistDTO>>? GetByUsuarioId(int id)
         {
             var byId = await _context.Playlists.
                        Include(u => u.Usuarios).
                        Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
-                       Where(u => u.UsuarioId == id).AsNoTracking().FirstOrDefaultAsync();
+                       Where(u => u.UsuarioId == id).AsNoTracking().ToListAsync();
 
-            PlaylistDTO dto = _map.Map<PlaylistDTO>(byId);
+            List<PlaylistDTO> dto = _map.Map<List<PlaylistDTO>>(byId);
             return dto;
         }
     }
