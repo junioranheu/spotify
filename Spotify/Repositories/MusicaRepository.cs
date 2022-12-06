@@ -85,7 +85,7 @@ namespace Spotify.API.Repositories
             return dto;
         }
 
-        public async Task<List<MusicaDTO>>? GetPorPlaylist(int id)
+        public async Task<List<MusicaDTO>>? GetByPlaylistId(int id)
         {
             var todos = await _context.Musicas.
                         Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Playlists).
@@ -126,7 +126,7 @@ namespace Spotify.API.Repositories
             return isOk;
         }
 
-        public async Task<List<MusicaDTO>>? GetPorPalavraChave(string palavraChave)
+        public async Task<List<MusicaDTO>>? GetByPalavraChave(string palavraChave)
         {
             var todos = await _context.Musicas.
                         Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Playlists).

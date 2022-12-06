@@ -90,10 +90,10 @@ namespace Spotify.API.Controllers
             return Ok(porId);
         }
 
-        [HttpGet("porPlaylist/{id}")]
-        public async Task<ActionResult<MusicaDTO>> GetPorPlaylist(int id)
+        [HttpGet("byPlaylistId/{id}")]
+        public async Task<ActionResult<MusicaDTO>> GetByPlaylistId(int id)
         {
-            var porId = await _musicaRepository.GetPorPlaylist(id);
+            var porId = await _musicaRepository.GetByPlaylistId(id);
 
             if (porId == null)
             {
@@ -116,10 +116,10 @@ namespace Spotify.API.Controllers
             return Ok(true);
         }
 
-        [HttpGet("porPalavraChave/{palavraChave}")]
-        public async Task<ActionResult<List<MusicaDTO>>> GetPorPalavraChave(string palavraChave)
+        [HttpGet("byPalavraChave/{palavraChave}")]
+        public async Task<ActionResult<List<MusicaDTO>>> GetByPalavraChave(string palavraChave)
         {
-            var porPalavra = await _musicaRepository.GetPorPalavraChave(palavraChave);
+            var porPalavra = await _musicaRepository.GetByPalavraChave(palavraChave);
 
             if (porPalavra == null)
             {

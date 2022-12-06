@@ -9,8 +9,8 @@ namespace Spotify.API.Interfaces
         Task? Deletar(int id);
         Task<List<MusicaDTO>>? GetTodos();
         Task<MusicaDTO>? GetById(int id);
-        Task<List<MusicaDTO>>? GetPorPlaylist(int id);
+        Task<List<MusicaDTO>>? GetByPlaylistId(int id);
         Task<int>? PostIncrementarOuvinte(int id);
-        Task<List<MusicaDTO>>? GetPorPalavraChave(string palavraChave);
+        Task<List<MusicaDTO>>? GetByPalavraChave(string palavraChave);
     }
 }
