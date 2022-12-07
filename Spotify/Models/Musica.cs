@@ -13,6 +13,11 @@ namespace Spotify.API.Models
         public int DuracaoSegundos { get; set; } = 0;
         public DateTime DataLancamento { get; set; } = HorarioBrasilia();
 
+        // Fk (De lá pra cá);
+        public int UsuarioId { get; set; }
+        [JsonIgnore]
+        public Usuario? Usuarios { get; set; }
+
         public bool IsAtivo { get; set; } = true; 
         public DateTime DataRegistro { get; set; } = HorarioBrasilia();
 

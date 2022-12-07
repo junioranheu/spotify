@@ -3,6 +3,7 @@ using Spotify.API.DTOs;
 using Spotify.API.Enums;
 using Spotify.API.Filters;
 using Spotify.API.Interfaces;
+using System.Security.Claims;
 
 namespace Spotify.API.Controllers
 {
@@ -18,9 +19,10 @@ namespace Spotify.API.Controllers
         }
 
         [HttpPost("adicionar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
         public async Task<ActionResult<bool>> Adicionar(PlaylistDTO dto)
         {
+            dto.UsuarioId = Convert.ToInt32(User?.FindFirstValue(ClaimTypes.NameIdentifier));
             await _playlistRepository.Adicionar(dto);
             return Ok(true);
         }

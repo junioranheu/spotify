@@ -124,7 +124,7 @@ namespace Spotify.API.Controllers
 
                     // Então salve o arquivo no servidor;
                     var arquivoBytes = await IFormFileParaBytes(arquivo);
-                    System.IO.File.WriteAllBytesAsync(caminhoDestino, arquivoBytes);
+                    await System.IO.File.WriteAllBytesAsync(caminhoDestino, arquivoBytes);
 
                     return Tuple.Create(true, nomeArquivo);
                 }

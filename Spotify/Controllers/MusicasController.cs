@@ -3,6 +3,7 @@ using Spotify.API.DTOs;
 using Spotify.API.Enums;
 using Spotify.API.Filters;
 using Spotify.API.Interfaces;
+using System.Security.Claims;
 using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.Controllers
@@ -24,6 +25,7 @@ namespace Spotify.API.Controllers
         [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
         public async Task<ActionResult<MusicaDTO>> Adicionar(MusicaAdicionarDTO dto)
         {
+            dto.UsuarioId = Convert.ToInt32(User?.FindFirstValue(ClaimTypes.NameIdentifier));
             var newMusica = await _musicaRepository.Adicionar(dto);
 
             // Verificar se o usuário inseriu a música via arquivo ou URL do youtube;

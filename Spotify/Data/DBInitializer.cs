@@ -184,34 +184,34 @@ namespace Spotify.API.Data
             // Musicas e MusicasBandas;
             if (!await context.Musicas.AnyAsync())
             {
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 1, Nome = "Bohemian rhapsody", Ouvintes = 0, DuracaoSegundos = 359, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 2, Nome = "Live forever", Ouvintes = 0, DuracaoSegundos = 277, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 3, Nome = "Happier than ever", Ouvintes = 0, DuracaoSegundos = 298, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 4, Nome = "E aí, gordo", Ouvintes = 0, DuracaoSegundos = 6, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 5, Nome = "Is this it", Ouvintes = 0, DuracaoSegundos = 72, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 6, Nome = "Soma", Ouvintes = 0, DuracaoSegundos = 98, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 7, Nome = "Fluorescent adolescent", Ouvintes = 0, DuracaoSegundos = 117, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 8, Nome = "505", Ouvintes = 0, DuracaoSegundos = 253, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 9, Nome = "There she goes", Ouvintes = 0, DuracaoSegundos = 171, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 10, Nome = "Summer love", Ouvintes = 0, DuracaoSegundos = 209, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 11, Nome = "If I had a gun...", Ouvintes = 0, DuracaoSegundos = 247, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 12, Nome = "Shelter", Ouvintes = 0, DuracaoSegundos = 239, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 13, Nome = "Vida louca", Ouvintes = 0, DuracaoSegundos = 154, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 14, Nome = "Quando bate aquela saudade", Ouvintes = 0, DuracaoSegundos = 394, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 15, Nome = "No. 1 party anthem", Ouvintes = 0, DuracaoSegundos = 243, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 16, Nome = "New light", Ouvintes = 0, DuracaoSegundos = 216, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 17, Nome = "Dark necessities", Ouvintes = 0, DuracaoSegundos = 302, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 18, Nome = "Last train home", Ouvintes = 0, DuracaoSegundos = 187, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 19, Nome = "I guess I just feel like", Ouvintes = 0, DuracaoSegundos = 287, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 20, Nome = "Belief", Ouvintes = 0, DuracaoSegundos = 242, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 21, Nome = "Little James", Ouvintes = 0, DuracaoSegundos = 255, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 22, Nome = "Want someone to remember me", Ouvintes = 0, DuracaoSegundos = 205, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 23, Nome = "Xuliana (anos 80)", Ouvintes = 0, DuracaoSegundos = 128, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 24, Nome = "Hey Jude", Ouvintes = 0, DuracaoSegundos = 425, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 25, Nome = "Don't let me down", Ouvintes = 0, DuracaoSegundos = 215, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 26, Nome = "My sweet lord", Ouvintes = 0, DuracaoSegundos = 263, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 27, Nome = "Amor I love you", Ouvintes = 0, DuracaoSegundos = 102, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Musicas.AddAsync(new Musica() { MusicaId = 28, Nome = "As it was", Ouvintes = 0, DuracaoSegundos = 163, DataLancamento = dataAgora, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 1, Nome = "Bohemian rhapsody", Ouvintes = 0, DuracaoSegundos = 359, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 2, Nome = "Live forever", Ouvintes = 0, DuracaoSegundos = 277, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 3, Nome = "Happier than ever", Ouvintes = 0, DuracaoSegundos = 298, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 4, Nome = "E aí, gordo", Ouvintes = 0, DuracaoSegundos = 6, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 5, Nome = "Is this it", Ouvintes = 0, DuracaoSegundos = 72, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 6, Nome = "Soma", Ouvintes = 0, DuracaoSegundos = 98, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 7, Nome = "Fluorescent adolescent", Ouvintes = 0, DuracaoSegundos = 117, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 8, Nome = "505", Ouvintes = 0, DuracaoSegundos = 253, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 9, Nome = "There she goes", Ouvintes = 0, DuracaoSegundos = 171, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 10, Nome = "Summer love", Ouvintes = 0, DuracaoSegundos = 209, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 11, Nome = "If I had a gun...", Ouvintes = 0, DuracaoSegundos = 247, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 12, Nome = "Shelter", Ouvintes = 0, DuracaoSegundos = 239, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 13, Nome = "Vida louca", Ouvintes = 0, DuracaoSegundos = 154, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 14, Nome = "Quando bate aquela saudade", Ouvintes = 0, DuracaoSegundos = 394, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 15, Nome = "No. 1 party anthem", Ouvintes = 0, DuracaoSegundos = 243, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 16, Nome = "New light", Ouvintes = 0, DuracaoSegundos = 216, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 17, Nome = "Dark necessities", Ouvintes = 0, DuracaoSegundos = 302, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 18, Nome = "Last train home", Ouvintes = 0, DuracaoSegundos = 187, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 19, Nome = "I guess I just feel like", Ouvintes = 0, DuracaoSegundos = 287, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 20, Nome = "Belief", Ouvintes = 0, DuracaoSegundos = 242, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 21, Nome = "Little James", Ouvintes = 0, DuracaoSegundos = 255, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 22, Nome = "Want someone to remember me", Ouvintes = 0, DuracaoSegundos = 205, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 23, Nome = "Xuliana (anos 80)", Ouvintes = 0, DuracaoSegundos = 128, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 24, Nome = "Hey Jude", Ouvintes = 0, DuracaoSegundos = 425, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 25, Nome = "Don't let me down", Ouvintes = 0, DuracaoSegundos = 215, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 26, Nome = "My sweet lord", Ouvintes = 0, DuracaoSegundos = 263, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 27, Nome = "Amor I love you", Ouvintes = 0, DuracaoSegundos = 102, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Musicas.AddAsync(new Musica() { MusicaId = 28, Nome = "As it was", Ouvintes = 0, DuracaoSegundos = 163, DataLancamento = dataAgora, UsuarioId = 1, IsAtivo = true, DataRegistro = dataAgora });
             }
 
             if (!await context.MusicasBandas.AnyAsync())
