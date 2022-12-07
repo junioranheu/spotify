@@ -11,7 +11,7 @@ namespace Spotify.API.DTOs
         public string? Nome { get; set; } = null;
         public int Ouvintes { get; set; } = 0;
         public int DuracaoSegundos { get; set; } = 0;
-        public DateTime DataLancamento { get; set; } = HorarioBrasilia();
+        public DateTime? DataLancamento { get; set; } = HorarioBrasilia();
 
         public bool IsAtivo { get; set; } = true;
         public DateTime DataRegistro { get; set; } = HorarioBrasilia();
