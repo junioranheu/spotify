@@ -75,7 +75,8 @@ namespace Spotify.API.Repositories
             var byId = await _context.Playlists.
                        Include(u => u.Usuarios).
                        Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
-                       Where(u => u.UsuarioId == id).AsNoTracking().ToListAsync();
+                       Where(u => u.UsuarioId == id).
+                       OrderBy(dr => dr.DataRegistro).AsNoTracking().ToListAsync();
 
             List<PlaylistDTO> dto = _map.Map<List<PlaylistDTO>>(byId);
             return dto;

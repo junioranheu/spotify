@@ -94,7 +94,8 @@ namespace Spotify.API.Repositories
                         ThenInclude(ba => ba.BandasArtistas).ThenInclude(a => a.Artistas).
                         Include(am => am.AlbunsMusicas).ThenInclude(a => a.Albuns).
 
-                        Where(p => p.IsAtivo == true && p.PlaylistsMusicas.All(z => z.PlaylistId == id)).AsNoTracking().ToListAsync();
+                        Where(p => p.IsAtivo == true && p.PlaylistsMusicas.All(z => z.PlaylistId == id)).
+                        OrderBy(dr => dr.DataRegistro).AsNoTracking().ToListAsync();
 
             List<MusicaDTO> dto = _map.Map<List<MusicaDTO>>(todos);
             return dto;
