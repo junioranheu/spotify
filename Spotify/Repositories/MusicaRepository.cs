@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using NAudio.Wave;
 using Spotify.API.Data;
 using Spotify.API.DTOs;
 using Spotify.API.Enums;
@@ -45,7 +46,6 @@ namespace Spotify.API.Repositories
 
             _context.Update(musica);
             await _context.SaveChangesAsync();
-
         }
 
         public async Task? Deletar(int id)
@@ -142,6 +142,32 @@ namespace Spotify.API.Repositories
 
             List<MusicaDTO> dto = _map.Map<List<MusicaDTO>>(todos);
             return dto;
+        }
+
+        public async Task<bool>? AtualizarDuracaoMusica(int id, string caminhoMusica)
+        {
+            if (File.Exists(caminhoMusica))
+            {
+                try
+                {
+                    Mp3FileReader reader = new(caminhoMusica); // https://stackoverflow.com/a/34518350
+                    TimeSpan duracao = reader.TotalTime;
+
+                    var byId = await _context.Musicas.Where(m => m.MusicaId == id).FirstOrDefaultAsync();
+                    byId.DuracaoSegundos = (int)duracao.TotalSeconds;
+
+                    _context.Update(byId);
+                    await _context.SaveChangesAsync();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+            return false;
         }
     }
 }

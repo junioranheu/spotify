@@ -177,7 +177,7 @@ namespace Spotify.Utils
 
         // Salvar vídeo do Youtube como .mp3: https://stackoverflow.com/questions/39877884/c-sharp-download-the-sound-of-a-youtube-video;
         // Foi necessário instalar o pacote "System.Configuration.ConfigurationManager" também;
-        public static async Task<bool> YoutubeToMp3(string pastaDestino, string urlVideo, string nomeArquivoMp3)
+        public static async Task<Tuple<bool, string>> YoutubeToMp3(string pastaDestino, string urlVideo, string nomeArquivoMp3)
         {
             return await Task.Run(() =>
             {
@@ -190,20 +190,21 @@ namespace Spotify.Utils
 
                     // Converter arquivo de .mp4 para .mp3;
                     var inputFile = new MediaFile { Filename = $"{pastaDestino}{vid.FullName}" };
-                    var outputFile = new MediaFile { Filename = $"{pastaDestino}{nomeArquivoMp3}.mp3" };
+                    string caminhoOutputFile = $"{pastaDestino}{nomeArquivoMp3}.mp3";
+                    var outputFile = new MediaFile { Filename = caminhoOutputFile };
                     using var engine = new Engine();
                     engine.GetMetadata(inputFile);
                     engine.Convert(inputFile, outputFile);
 
                     // Deletar arquivo .MP4 (inicial);
                     File.Delete($"{pastaDestino}{vid.FullName}");
+
+                    return Tuple.Create(true, caminhoOutputFile);
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    return Tuple.Create(false, "");
                 }
-
-                return true;
             });
         }
 

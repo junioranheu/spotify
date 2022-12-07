@@ -29,12 +29,13 @@ namespace Spotify.API.Controllers
             var newMusica = await _musicaRepository.Adicionar(dto);
 
             // Verificar se o usuário inseriu a música via arquivo ou URL do youtube;
+            Tuple<bool, string> resultadoUpload = (dynamic)null;
             if (!String.IsNullOrEmpty(dto.Mp3Base64))
             {
                 var file = Base64ToFile(dto.Mp3Base64);
-                var resultadoUploadArquivo = await UparArquivo(file, $"{newMusica.MusicaId}.mp3", GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), $"{newMusica.MusicaId}.mp3", _webHostEnvironment);
+                resultadoUpload = await UparArquivo(file, $"{newMusica.MusicaId}.mp3", GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), $"{newMusica.MusicaId}.mp3", _webHostEnvironment);
 
-                if (!resultadoUploadArquivo.Item1)
+                if (!resultadoUpload.Item1)
                 {
                     newMusica.Erro = true;
                     newMusica.CodigoErro = (int)CodigosErrosEnum.ErroInternoUploadArquivo;
@@ -43,15 +44,18 @@ namespace Spotify.API.Controllers
             }
             else if (!String.IsNullOrEmpty(dto.UrlYoutube))
             {
-                bool resultadoYoutubeToMp3 = await YoutubeToMp3(GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), dto.UrlYoutube, newMusica?.MusicaId.ToString());
+                resultadoUpload = await YoutubeToMp3(GetDescricaoEnum(CaminhosUploadEnum.UploadProtegidoMusica), dto.UrlYoutube, newMusica?.MusicaId.ToString());
 
-                if (!resultadoYoutubeToMp3)
+                if (!resultadoUpload.Item1)
                 {
                     newMusica.Erro = true;
                     newMusica.CodigoErro = (int)CodigosErrosEnum.ErroInternoConversaoYoutube;
                     newMusica.MensagemErro = GetDescricaoEnum(CodigosErrosEnum.ErroInternoConversaoYoutube);
                 }
             }
+
+            // Verificar o tamanho (quantidade de segundos) o áudio tem;
+            await _musicaRepository.AtualizarDuracaoMusica(newMusica.MusicaId, resultadoUpload.Item2);
 
             return Ok(newMusica);
         }

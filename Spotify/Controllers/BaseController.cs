@@ -104,7 +104,7 @@ namespace Spotify.API.Controllers
                     return Tuple.Create(false, "");
                 }
 
-                string caminhoDestino = $"{webRootPath}/{caminho}{nomeArquivo}"; // Caminho de destino para upar;
+                string caminhoDestino = $"{caminho}{nomeArquivo}"; // Caminho de destino para upar;
 
                 // Copiar o novo arquivo para o local de destino;
                 if (arquivo.Length > 0)
@@ -124,9 +124,9 @@ namespace Spotify.API.Controllers
 
                     // Então salve o arquivo no servidor;
                     var arquivoBytes = await IFormFileParaBytes(arquivo);
-                    await System.IO.File.WriteAllBytesAsync(caminhoDestino, arquivoBytes);
+                    await System.IO.File.WriteAllBytesAsync($"{webRootPath}/{caminhoDestino}", arquivoBytes);
 
-                    return Tuple.Create(true, nomeArquivo);
+                    return Tuple.Create(true, caminhoDestino);
                 }
                 else
                 {
