@@ -29,7 +29,7 @@ namespace Spotify.API.Controllers
             var newMusica = await _musicaRepository.Adicionar(dto);
 
             // Verificar se o usuário inseriu a música via arquivo ou URL do youtube;
-            Tuple<bool, string> resultadoUpload = (dynamic)null;
+            Tuple<bool, string>? resultadoUpload = null;
             if (!String.IsNullOrEmpty(dto.Mp3Base64))
             {
                 var file = Base64ToFile(dto.Mp3Base64);
@@ -55,8 +55,11 @@ namespace Spotify.API.Controllers
             }
 
             // Verificar o tamanho (quantidade de segundos) o áudio tem;
-            await _musicaRepository.AtualizarDuracaoMusica(newMusica.MusicaId, resultadoUpload.Item2);
-
+            if (!String.IsNullOrEmpty(resultadoUpload?.Item2))
+            {
+                await _musicaRepository.AtualizarDuracaoMusica(newMusica.MusicaId, resultadoUpload.Item2);
+            }
+          
             return Ok(newMusica);
         }
 

@@ -4,6 +4,7 @@ using Spotify.API.Data;
 using Spotify.API.DTOs;
 using Spotify.API.Interfaces;
 using Spotify.API.Models;
+using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.Repositories
 {
@@ -18,12 +19,20 @@ namespace Spotify.API.Repositories
             _map = map;
         }
 
-        public async Task? Adicionar(PlaylistDTO dto)
+        public async Task<PlaylistDTO>? Adicionar(PlaylistDTO dto)
         {
             Playlist playlist = _map.Map<Playlist>(dto);
 
             await _context.AddAsync(playlist);
             await _context.SaveChangesAsync();
+
+            // Atuailizar foto;
+            playlist.Foto = $"{playlist.PlaylistId}{GerarStringAleatoria(5, true)}.webp";
+            _context.Update(playlist);
+            await _context.SaveChangesAsync();
+
+            PlaylistDTO dtoResultado = _map.Map<PlaylistDTO>(playlist);
+            return dtoResultado;
         }
 
         public async Task? Atualizar(PlaylistDTO dto)
@@ -54,6 +63,19 @@ namespace Spotify.API.Repositories
                         Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
                         Include(u => u.Usuarios).
                         OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
+
+            List<PlaylistDTO> dto = _map.Map<List<PlaylistDTO>>(todos);
+            return dto;
+        }
+
+        public async Task<List<PlaylistDTO>>? GetTodosNaoAdm()
+        {
+            var todos = await _context.Playlists.
+                        Include(u => u.Usuarios).
+                        Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                        Include(u => u.Usuarios).
+                        OrderBy(n => n.Nome).
+                        Where(u => u.UsuarioId != 1).AsNoTracking().ToListAsync();
 
             List<PlaylistDTO> dto = _map.Map<List<PlaylistDTO>>(todos);
             return dto;

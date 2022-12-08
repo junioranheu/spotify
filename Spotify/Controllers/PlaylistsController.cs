@@ -4,6 +4,7 @@ using Spotify.API.Enums;
 using Spotify.API.Filters;
 using Spotify.API.Interfaces;
 using System.Security.Claims;
+using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.Controllers
 {
@@ -11,10 +12,12 @@ namespace Spotify.API.Controllers
     [ApiController]
     public class PlaylistsController : BaseController<PlaylistsController>
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IPlaylistRepository _playlistRepository;
 
-        public PlaylistsController(IPlaylistRepository playlistRepository)
+        public PlaylistsController(IWebHostEnvironment webHostEnvironment, IPlaylistRepository playlistRepository)
         {
+            _webHostEnvironment = webHostEnvironment;
             _playlistRepository = playlistRepository;
         }
 
@@ -23,7 +26,15 @@ namespace Spotify.API.Controllers
         public async Task<ActionResult<bool>> Adicionar(PlaylistDTO dto)
         {
             dto.UsuarioId = Convert.ToInt32(User?.FindFirstValue(ClaimTypes.NameIdentifier));
-            await _playlistRepository.Adicionar(dto);
+            var newPlaylist = await _playlistRepository.Adicionar(dto);
+
+            // Atualizar físicamente o arquivo;
+            if (!String.IsNullOrEmpty(dto.Foto))
+            {
+                var file = Base64ToFile(dto.Foto);
+                await UparArquivo(file, newPlaylist.Foto, GetDescricaoEnum(CaminhosUploadEnum.UploadPlaylists), newPlaylist.Foto, _webHostEnvironment);
+            }
+
             return Ok(true);
         }
 
@@ -47,6 +58,13 @@ namespace Spotify.API.Controllers
         public async Task<ActionResult<List<PlaylistDTO>>> GetTodos()
         {
             var todos = await _playlistRepository.GetTodos();
+            return Ok(todos);
+        }
+
+        [HttpGet("todosNaoAdm")]
+        public async Task<ActionResult<List<PlaylistDTO>>> GetTodosNaoAdm()
+        {
+            var todos = await _playlistRepository.GetTodosNaoAdm();
             return Ok(todos);
         }
 
