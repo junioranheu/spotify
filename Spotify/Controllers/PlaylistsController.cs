@@ -23,7 +23,7 @@ namespace Spotify.API.Controllers
 
         [HttpPost("adicionar")]
         [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
-        public async Task<ActionResult<bool>> Adicionar(PlaylistDTO dto)
+        public async Task<ActionResult<PlaylistDTO>> Adicionar(PlaylistDTO dto)
         {
             dto.UsuarioId = Convert.ToInt32(User?.FindFirstValue(ClaimTypes.NameIdentifier));
             var newPlaylist = await _playlistRepository.Adicionar(dto);
@@ -35,7 +35,7 @@ namespace Spotify.API.Controllers
                 await UparArquivo(file, newPlaylist.Foto, GetDescricaoEnum(CaminhosUploadEnum.UploadPlaylists), newPlaylist.Foto, _webHostEnvironment);
             }
 
-            return Ok(true);
+            return Ok(newPlaylist);
         }
 
         [HttpPut("atualizar")]
