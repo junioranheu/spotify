@@ -112,7 +112,7 @@ namespace Spotify.API.Controllers
                     // Verificar se já existe uma foto caso exista, delete-a;
                     if (!String.IsNullOrEmpty(nomeArquivoAnterior))
                     {
-                        string caminhoArquivoAtual = webRootPath + caminho + nomeArquivoAnterior;
+                        string caminhoArquivoAtual = $"{webRootPath}/{caminho}{nomeArquivoAnterior}";
 
                         // Verificar se o arquivo existe;
                         if (System.IO.File.Exists(caminhoArquivoAtual))

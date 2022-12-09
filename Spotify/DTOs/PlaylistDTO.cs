@@ -11,6 +11,7 @@ namespace Spotify.API.DTOs
         public string? Nome { get; set; } = null;
         public string? Sobre { get; set; } = null;
         public string? Foto { get; set; } = null;
+        public string? FotoAnterior { get; set; } = null;
         public string? CorDominante { get; set; } = null;
 
         // Fk (De lá pra cá);

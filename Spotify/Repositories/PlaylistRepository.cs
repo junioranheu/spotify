@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Spotify.API.Data;
 using Spotify.API.DTOs;
+using Spotify.API.Enums;
 using Spotify.API.Interfaces;
 using Spotify.API.Models;
 using static Spotify.Utils.Biblioteca;
@@ -26,7 +27,7 @@ namespace Spotify.API.Repositories
             await _context.AddAsync(playlist);
             await _context.SaveChangesAsync();
 
-            // Atuailizar foto;
+            // Atualizar foto;
             playlist.Foto = $"{playlist.PlaylistId}{GerarStringAleatoria(5, true)}.webp";
             _context.Update(playlist);
             await _context.SaveChangesAsync();
@@ -35,12 +36,27 @@ namespace Spotify.API.Repositories
             return dtoResultado;
         }
 
-        public async Task? Atualizar(PlaylistDTO dto)
+        public async Task<PlaylistDTO?>? Atualizar(PlaylistDTO dto)
         {
-            Playlist playlist = _map.Map<Playlist>(dto);
+            PlaylistDTO oldDTO = await GetById(dto.PlaylistId);
 
-            _context.Update(playlist);
+            if (oldDTO is null)
+            {
+                PlaylistDTO erro = new() { Erro = true, CodigoErro = (int)CodigosErrosEnum.NaoEncontrado, MensagemErro = GetDescricaoEnum(CodigosErrosEnum.NaoEncontrado) };
+                return erro;
+            }
+
+            oldDTO.Nome = dto.Nome;
+            oldDTO.Sobre = dto.Sobre;
+            oldDTO.FotoAnterior = oldDTO.Foto;
+            oldDTO.Foto = $"{oldDTO.PlaylistId}{GerarStringAleatoria(5, true)}.webp";
+            oldDTO.CorDominante = dto.CorDominante;
+
+            Playlist old = _map.Map<Playlist>(oldDTO);
+            _context.Update(old);
             await _context.SaveChangesAsync();
+
+            return oldDTO;
         }
 
         public async Task? Deletar(int id)
@@ -98,7 +114,7 @@ namespace Spotify.API.Repositories
                        Include(u => u.Usuarios).
                        Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
                        Where(u => u.UsuarioId == id).
-                       OrderBy(dr => dr.DataRegistro).AsNoTracking().ToListAsync();
+                       OrderByDescending(dr => dr.DataRegistro).AsNoTracking().ToListAsync();
 
             List<PlaylistDTO> dto = _map.Map<List<PlaylistDTO>>(byId);
             return dto;

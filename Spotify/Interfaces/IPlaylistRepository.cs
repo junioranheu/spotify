@@ -5,7 +5,7 @@ namespace Spotify.API.Interfaces
     public interface IPlaylistRepository
     {
         Task<PlaylistDTO>? Adicionar(PlaylistDTO dto);
-        Task? Atualizar(PlaylistDTO dto);
+        Task<PlaylistDTO>? Atualizar(PlaylistDTO dto);
         Task? Deletar(int id);
         Task<List<PlaylistDTO>>? GetTodos();
         Task<List<PlaylistDTO>>? GetTodosNaoAdm();

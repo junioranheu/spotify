@@ -25,25 +25,36 @@ namespace Spotify.API.Controllers
         [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
         public async Task<ActionResult<PlaylistDTO>> Adicionar(PlaylistDTO dto)
         {
+            string fotoBase64 = dto.Foto;
             dto.UsuarioId = Convert.ToInt32(User?.FindFirstValue(ClaimTypes.NameIdentifier));
             var newPlaylist = await _playlistRepository.Adicionar(dto);
 
             // Atualizar físicamente o arquivo;
-            if (!String.IsNullOrEmpty(dto.Foto))
+            if (!String.IsNullOrEmpty(fotoBase64))
             {
-                var file = Base64ToFile(dto.Foto);
-                await UparArquivo(file, newPlaylist.Foto, GetDescricaoEnum(CaminhosUploadEnum.UploadPlaylists), newPlaylist.Foto, _webHostEnvironment);
+                var file = Base64ToFile(fotoBase64);
+                await UparArquivo(file, newPlaylist.Foto, GetDescricaoEnum(CaminhosUploadEnum.UploadPlaylists), "", _webHostEnvironment);
             }
 
             return Ok(newPlaylist);
         }
 
         [HttpPut("atualizar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
-        public async Task<ActionResult<bool>> Atualizar(PlaylistDTO dto)
+        [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
+        public async Task<ActionResult<PlaylistDTO>> Atualizar(PlaylistDTO dto)
         {
-            await _playlistRepository.Atualizar(dto);
-            return Ok(true);
+            string fotoBase64 = dto.Foto;
+            dto.UsuarioId = Convert.ToInt32(User?.FindFirstValue(ClaimTypes.NameIdentifier));
+            var updatePlaylist = await _playlistRepository.Atualizar(dto);
+
+            // Atualizar físicamente o arquivo;
+            if (!String.IsNullOrEmpty(fotoBase64))
+            {
+                var file = Base64ToFile(fotoBase64);
+                await UparArquivo(file, updatePlaylist.Foto, GetDescricaoEnum(CaminhosUploadEnum.UploadPlaylists), updatePlaylist.FotoAnterior, _webHostEnvironment);
+            }
+
+            return Ok(updatePlaylist);
         }
 
         [HttpDelete("deletar/{id}")]
