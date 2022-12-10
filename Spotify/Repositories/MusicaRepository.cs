@@ -25,10 +25,30 @@ namespace Spotify.API.Repositories
         {
             try
             {
+                // #1 - Adicionar a música no BD;
                 Musica musica = _map.Map<Musica>(dto);
-
                 await _context.AddAsync(musica);
                 await _context.SaveChangesAsync();
+
+                // #2 - Adicionar a música nas playlists selecionadas;
+                if (dto.ListaPlaylists?.Count > 0)
+                {
+                    List<PlaylistMusica> pms = new();
+
+                    foreach (var playlist in dto.ListaPlaylists)
+                    {
+                        PlaylistMusica pm = new()
+                        {
+                            PlaylistId = playlist,
+                            MusicaId = musica.MusicaId
+                        };
+
+                        pms.Add(pm);
+                    }
+
+                    await _context.AddRangeAsync(pms);
+                    await _context.SaveChangesAsync();
+                }
 
                 MusicaDTO musicaDTO = _map.Map<MusicaDTO>(musica);
                 return musicaDTO;
