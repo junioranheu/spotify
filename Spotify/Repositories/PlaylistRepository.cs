@@ -38,14 +38,18 @@ namespace Spotify.API.Repositories
 
         public async Task<PlaylistDTO?>? Atualizar(PlaylistDTO dto)
         {
-            PlaylistDTO oldDTO = await GetById(dto.PlaylistId);
+            var byId = await _context.Playlists.
+                       Include(pm => pm.PlaylistsMusicas).ThenInclude(m => m.Musicas).ThenInclude(mb => mb.MusicasBandas).ThenInclude(b => b.Bandas).
+                       Where(p => p.PlaylistId == dto.PlaylistId).AsNoTracking().FirstOrDefaultAsync();
 
-            if (oldDTO is null)
+            if (byId is null)
             {
                 PlaylistDTO erro = new() { Erro = true, CodigoErro = (int)CodigosErrosEnum.NaoEncontrado, MensagemErro = GetDescricaoEnum(CodigosErrosEnum.NaoEncontrado) };
                 return erro;
             }
 
+            PlaylistDTO oldDTO = _map.Map<PlaylistDTO>(byId);
+     
             oldDTO.Nome = dto.Nome;
             oldDTO.Sobre = dto.Sobre;
             oldDTO.FotoAnterior = oldDTO.Foto;
