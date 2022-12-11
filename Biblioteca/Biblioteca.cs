@@ -179,33 +179,32 @@ namespace Spotify.Utils
         // Foi necessário instalar o pacote "System.Configuration.ConfigurationManager" também;
         public static async Task<Tuple<bool, string>> YoutubeToMp3(string pastaDestino, string urlVideo, string nomeArquivoMp3)
         {
-            return await Task.Run(() =>
+            try
             {
-                try
-                {
-                    // Baixar arquivo do Youtube em formato .mp4;
-                    var youtube = YouTube.Default;
-                    var vid = youtube.GetVideo(urlVideo);
-                    File.WriteAllBytesAsync($"{pastaDestino}{vid.FullName}", vid.GetBytes());
+                // Baixar arquivo do Youtube em formato .mp4;
+                var youtube = YouTube.Default;
+                var vid = await youtube.GetVideoAsync(urlVideo);
+                string path = $"{pastaDestino}{vid.FullName}";
+                await File.WriteAllBytesAsync(path, await vid.GetBytesAsync());
 
-                    // Converter arquivo de .mp4 para .mp3;
-                    var inputFile = new MediaFile { Filename = $"{pastaDestino}{vid.FullName}" };
-                    string caminhoOutputFile = $"{pastaDestino}{nomeArquivoMp3}.mp3";
-                    var outputFile = new MediaFile { Filename = caminhoOutputFile };
-                    using var engine = new Engine();
-                    engine.GetMetadata(inputFile);
-                    engine.Convert(inputFile, outputFile);
+                // Converter arquivo de .mp4 para .mp3;
+                var inputFile = new MediaFile { Filename = path };
+                string caminhoOutputFile = $"{pastaDestino}{nomeArquivoMp3}.mp3";
+                var outputFile = new MediaFile { Filename = caminhoOutputFile };
 
-                    // Deletar arquivo .MP4 (inicial);
-                    File.Delete($"{pastaDestino}{vid.FullName}");
+                using var engine = new Engine();
+                engine.GetMetadata(inputFile);
+                engine.Convert(inputFile, outputFile);
 
-                    return Tuple.Create(true, caminhoOutputFile);
-                }
-                catch (Exception ex)
-                {
-                    return Tuple.Create(false, "");
-                }
-            });
+                // Deletar arquivo .MP4 (inicial);
+                File.Delete(path);
+
+                return Tuple.Create(true, caminhoOutputFile);
+            }
+            catch (Exception ex)
+            {
+                return Tuple.Create(false, "");
+            }
         }
 
         // Converter IFormFile para bytes[]: https://stackoverflow.com/questions/36432028/how-to-convert-a-file-into-byte-array-in-memory;
