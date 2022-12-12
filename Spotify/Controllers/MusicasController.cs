@@ -137,5 +137,15 @@ namespace Spotify.API.Controllers
 
             return Ok(porPalavra);
         }
+
+        [HttpPost("adicionarMusicaEmPlaylists")]
+        [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
+        public async Task<ActionResult<bool>> AdicionarMusicaEmPlaylists(MusicaAdicionarDTO dto)
+        {
+            dto.UsuarioId = Convert.ToInt32(User?.FindFirstValue(ClaimTypes.NameIdentifier));
+            var isOk = await _musicaRepository.AdicionarMusicaEmPlaylists(dto);
+
+            return Ok(isOk);
+        }
     }
 }

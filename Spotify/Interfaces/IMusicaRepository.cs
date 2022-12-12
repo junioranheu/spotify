@@ -13,5 +13,6 @@ namespace Spotify.API.Interfaces
         Task<int>? PostIncrementarOuvinte(int id);
         Task<List<MusicaDTO>>? GetByPalavraChave(string palavraChave);
         Task<bool>? AtualizarDuracaoMusica(int id, string caminhoArquivo);
+        Task<bool>? AdicionarMusicaEmPlaylists(MusicaAdicionarDTO dto);
     }
 }

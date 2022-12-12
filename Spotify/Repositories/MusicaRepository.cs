@@ -31,25 +31,9 @@ namespace Spotify.API.Repositories
                 await _context.SaveChangesAsync();
 
                 // #2 - Adicionar a música nas playlists selecionadas;
-                if (dto.ListaPlaylists?.Count > 0)
-                {
-                    List<PlaylistMusica> pms = new();
-
-                    foreach (var playlist in dto.ListaPlaylists)
-                    {
-                        PlaylistMusica pm = new()
-                        {
-                            PlaylistId = playlist,
-                            MusicaId = musica.MusicaId
-                        };
-
-                        pms.Add(pm);
-                    }
-
-                    await _context.AddRangeAsync(pms);
-                    await _context.SaveChangesAsync();
-                }
-
+                dto.MusicaId = musica.MusicaId;
+                bool isOk = await AdicionarMusicaEmPlaylists(dto);
+ 
                 MusicaDTO musicaDTO = _map.Map<MusicaDTO>(musica);
                 return musicaDTO;
             }
@@ -188,6 +172,41 @@ namespace Spotify.API.Repositories
             }
 
             return false;
+        }
+
+        public async Task<bool>? AdicionarMusicaEmPlaylists(MusicaAdicionarDTO dto)
+        {
+            try
+            {
+                Musica musica = _map.Map<Musica>(dto);
+
+                if (dto.ListaPlaylists?.Count > 0)
+                {
+                    List<PlaylistMusica> pms = new();
+
+                    foreach (var playlist in dto.ListaPlaylists)
+                    {
+                        PlaylistMusica pm = new()
+                        {
+                            PlaylistId = playlist,
+                            MusicaId = musica.MusicaId
+                        };
+
+                        pms.Add(pm);
+                    }
+
+                    await _context.AddRangeAsync(pms);
+                    await _context.SaveChangesAsync();
+
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
