@@ -12,6 +12,7 @@ namespace Spotify.API.Data
 
         // Outros;
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         // Usuários e afins;
         public DbSet<Usuario> Usuarios { get; set; }
@@ -20,7 +21,7 @@ namespace Spotify.API.Data
         // Outros;
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<BandaArtista> BandasArtistas { get; set; }
-        public DbSet<Banda> Bandas { get; set; }  
+        public DbSet<Banda> Bandas { get; set; }
         public DbSet<MusicaBanda> MusicasBandas { get; set; }
         public DbSet<Musica> Musicas { get; set; }
 
