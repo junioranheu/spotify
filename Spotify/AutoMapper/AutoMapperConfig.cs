@@ -10,6 +10,7 @@ namespace Spotify.API.AutoMapper
         {
             // Outros; 
             CreateMap<RefreshToken, RefreshTokenDTO>().ReverseMap();
+            CreateMap<Log, LogDTO>().ReverseMap();
 
             // Usuário e afins;
             CreateMap<UsuarioTipo, UsuarioTipoDTO>().ReverseMap();

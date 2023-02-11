@@ -32,6 +32,7 @@ namespace Spotify.API
             // =-=-=-=-=-=-=-=-=-= Serviços =-=-=-=-=-=-=-=-=-=
             builder.Services.AddScoped<IAutenticarService, AutenticarService>();
             services.AddSingleton<IJwtTokenGeneratorService, JwtTokenGeneratorService>();
+            builder.Services.AddScoped<ILogRepository, LogRepository>();
 
             // Interfaces e repositórios;
             builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();

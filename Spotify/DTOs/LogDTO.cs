@@ -1,6 +1,7 @@
 ﻿using Spotify.API.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.DTOs
 {
@@ -17,5 +18,8 @@ namespace Spotify.API.DTOs
         public int? UsuarioId { get; set; } = 0;
         [JsonIgnore]
         public Usuario? Usuarios { get; set; }
+
+        public bool IsAtivo { get; set; } = true;
+        public DateTime DataRegistro { get; set; } = HorarioBrasilia();
     }
 }
