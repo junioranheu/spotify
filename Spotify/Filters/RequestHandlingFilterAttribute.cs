@@ -5,11 +5,11 @@ using System.Security.Claims;
 
 namespace Spotify.API.Filters
 {
-    public class SuccessHandlingFilterAttribute : ActionFilterAttribute
+    public class RequestHandlingFilterAttribute : ActionFilterAttribute
     {
         private readonly ILogRepository _logRepository;
 
-        public SuccessHandlingFilterAttribute(ILogRepository logRepository)
+        public RequestHandlingFilterAttribute(ILogRepository logRepository)
         {
             _logRepository = logRepository;
         }
