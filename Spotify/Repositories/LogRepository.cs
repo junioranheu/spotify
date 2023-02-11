@@ -7,7 +7,7 @@ using Spotify.API.Models;
 
 namespace Spotify.API.Repositories
 {
-    public class LogRepository : ILogRepository
+    public sealed class LogRepository : ILogRepository
     {
         public readonly Context _context;
         private readonly IMapper _map;

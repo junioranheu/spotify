@@ -14,47 +14,40 @@ namespace Spotify.API.Filters
             _logRepository = logRepository;
         }
 
-        public override async Task OnActionExecutionAsync(ActionExecutingContext filterContext, ActionExecutionDelegate next)
+        public override async Task OnActionExecutionAsync(ActionExecutingContext filterContextExecuting, ActionExecutionDelegate next)
         {
-            try
+            ActionExecutedContext filterContextExecuted = await next();
+            HttpRequest request = filterContextExecuted.HttpContext.Request;
+            HttpResponse response = filterContextExecuted.HttpContext.Response;
+
+            LogDTO dto = new()
             {
-                var actionExecutedContext = await next();
-                var request = filterContext.HttpContext.Request;
-                var response = filterContext.HttpContext.Response;
+                TipoRequisicao = request.Method ?? "",
+                Endpoint = request.Path.Value ?? "",
+                Query = request.QueryString.ToString() ?? "",
+                StatusResposta = response.StatusCode > 0 ? response.StatusCode : 0,
+                UsuarioNome = GetUsuarioNome(filterContextExecuted),
+                UsuarioId = GetUsuarioId(filterContextExecuted)
+            };
 
-                LogDTO dto = new()
-                {
-                    TipoRequisicao = request.Method ?? "",
-                    Endpoint = request.Path.Value ?? "",
-                    Query = request.QueryString.ToString() ?? "",
-                    StatusResposta = response.StatusCode > 0 ? response.StatusCode : 0,
-                    UsuarioNome = GetUsuarioNome(actionExecutedContext),
-                    UsuarioId = GetUsuarioId(actionExecutedContext)
-                };
-
-                await _logRepository.Adicionar(dto);
-            }
-            catch (Exception ex)
-            {
-
-            }
+            await _logRepository.Adicionar(dto);
         }
 
-        private static string GetUsuarioNome(ActionExecutedContext filterContext)
+        private static string GetUsuarioNome(ActionExecutedContext filterContextExecuted)
         {
-            if (filterContext.HttpContext.User.Identity.IsAuthenticated)
+            if (filterContextExecuted.HttpContext.User.Identity.IsAuthenticated)
             {
-                return filterContext.HttpContext.User?.FindFirstValue(ClaimTypes.Name) ?? "";
+                return filterContextExecuted.HttpContext.User?.FindFirstValue(ClaimTypes.Name) ?? "";
             }
 
             return "";
         }
 
-        private static int GetUsuarioId(ActionExecutedContext filterContext)
+        private static int GetUsuarioId(ActionExecutedContext filterContextExecuted)
         {
-            if (filterContext.HttpContext.User.Identity.IsAuthenticated)
+            if (filterContextExecuted.HttpContext.User.Identity.IsAuthenticated)
             {
-                return Convert.ToInt32(filterContext.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier));
+                return Convert.ToInt32(filterContextExecuted.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier));
             }
 
             return 0;

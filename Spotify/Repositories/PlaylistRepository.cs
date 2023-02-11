@@ -9,7 +9,7 @@ using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.Repositories
 {
-    public class PlaylistRepository : IPlaylistRepository
+    public sealed class PlaylistRepository : IPlaylistRepository
     {
         public readonly Context _context;
         private readonly IMapper _map;

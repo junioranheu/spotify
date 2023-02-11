@@ -10,7 +10,7 @@ using static Spotify.Utils.Biblioteca;
 
 namespace Spotify.API.Repositories
 {
-    public class MusicaRepository : IMusicaRepository
+    public sealed class MusicaRepository : IMusicaRepository
     {
         public readonly Context _context;
         private readonly IMapper _map;

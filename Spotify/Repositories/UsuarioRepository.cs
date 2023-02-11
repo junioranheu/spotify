@@ -7,7 +7,7 @@ using Spotify.API.Models;
 
 namespace Spotify.API.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public sealed class UsuarioRepository : IUsuarioRepository
     {
         public readonly Context _context;
         private readonly IMapper _map;
