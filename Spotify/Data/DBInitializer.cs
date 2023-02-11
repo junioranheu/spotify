@@ -38,75 +38,75 @@ namespace Spotify.API.Data
             #region seed_musicas
             if (!await context.Artistas.AnyAsync())
             {
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 1, Nome = "Freddie Mercury", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 2, Nome = "Brian May", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 3, Nome = "John Deacon", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 4, Nome = "Mike Grose", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 5, Nome = "Liam Gallagher", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 6, Nome = "Noel Gallagher", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 7, Nome = "Alex Turner", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 8, Nome = "Matt Helders", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 9, Nome = "Kevin Parker", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 10, Nome = "Matt Shultz", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 11, Nome = "Julian Casablancas", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 12, Nome = "Albert Hammond Jr", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 13, Nome = "Fabrizio Moretti", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 14, Nome = "Nikolai Fraiture", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 15, Nome = "James Mercer", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 16, Nome = "Danger Mouse", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 17, Nome = "Joe Newman", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 18, Nome = "Gus Under-Hamilton", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 19, Nome = "Jesse Rutherford", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 20, Nome = "Harry Styles", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 21, Nome = "Zayn Malik", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 22, Nome = "Liam Payne", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 23, Nome = "Louis Tomlison", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 24, Nome = "Niall Horan", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 25, Nome = "Billie Eilish", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 26, Nome = "Chaleco Israel", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 27, Nome = "Junior", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 28, Nome = "Lee Mavers", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 29, Nome = "MC Poze do Rodo", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 30, Nome = "Rúbel Brisolla", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 31, Nome = "Phillip Long", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 32, Nome = "John Mayer", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 33, Nome = "MC Lan", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 34, Nome = "Anthony Kiedis", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 35, Nome = "John Frusciante", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 36, Nome = "John Lennon", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 37, Nome = "Paul McCartney", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 38, Nome = "George Harrison", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 39, Nome = "Ringo Starr", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
-                await context.Artistas.AddAsync(new Artista() { ArtistaId = 40, Nome = "Marisa Monte", Foto = "", IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 1, Nome = "Freddie Mercury", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 2, Nome = "Brian May", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 3, Nome = "John Deacon", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 4, Nome = "Mike Grose", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 5, Nome = "Liam Gallagher", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 6, Nome = "Noel Gallagher", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 7, Nome = "Alex Turner", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 8, Nome = "Matt Helders", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 9, Nome = "Kevin Parker", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 10, Nome = "Matt Shultz", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 11, Nome = "Julian Casablancas", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 12, Nome = "Albert Hammond Jr", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 13, Nome = "Fabrizio Moretti", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 14, Nome = "Nikolai Fraiture", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 15, Nome = "James Mercer", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 16, Nome = "Danger Mouse", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 17, Nome = "Joe Newman", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 18, Nome = "Gus Under-Hamilton", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 19, Nome = "Jesse Rutherford", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 20, Nome = "Harry Styles", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 21, Nome = "Zayn Malik", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 22, Nome = "Liam Payne", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 23, Nome = "Louis Tomlison", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 24, Nome = "Niall Horan", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 25, Nome = "Billie Eilish", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 26, Nome = "Chaleco Israel", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 27, Nome = "Junior", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 28, Nome = "Lee Mavers", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 29, Nome = "MC Poze do Rodo", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 30, Nome = "Rúbel Brisolla", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 31, Nome = "Phillip Long", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 32, Nome = "John Mayer", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 33, Nome = "MC Lan", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 34, Nome = "Anthony Kiedis", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 35, Nome = "John Frusciante", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 36, Nome = "John Lennon", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 37, Nome = "Paul McCartney", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 38, Nome = "George Harrison", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 39, Nome = "Ringo Starr", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Artistas.AddAsync(new Artista() { ArtistaId = 40, Nome = "Marisa Monte", Foto = string.Empty, IsAtivo = true, DataRegistro = dataAgora });
             }
 
             if (!await context.Bandas.AnyAsync())
             {
-                await context.Bandas.AddAsync(new Banda() { BandaId = 1, Nome = "Queen", Sobre = "", Foto = "1.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(194, 46, 65, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 2, Nome = "Oasis", Sobre = "", Foto = "2.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(34, 19, 24, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 3, Nome = "Arctic Monkeys", Sobre = "", Foto = "3.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(80, 124, 147, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 4, Nome = "Tame Impala", Sobre = "", Foto = "4.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 5, Nome = "Cage The Elephant", Sobre = "", Foto = "5.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 6, Nome = "The Strokes", Sobre = "", Foto = "6.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(27, 34, 40, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 7, Nome = "Broken Bells", Sobre = "", Foto = "7.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 8, Nome = "The Shins", Sobre = "", Foto = "8.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(180, 222, 201, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 9, Nome = "alt-J", Sobre = "", Foto = "9.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 10, Nome = "The Neighbourhood", Foto = "10.webp", Sobre = "", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 11, Nome = "One Direction", Sobre = "", Foto = "11.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(181, 224, 200, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 12, Nome = "Harry Styles", Sobre = "", Foto = "12.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(203, 120, 123, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 13, Nome = "Billie Eilish", Sobre = "", Foto = "13.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(249, 187, 94, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 14, Nome = "Zayn", Sobre = "", Foto = "14.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 15, Nome = "Chaleco's Group", Sobre = "", Foto = "15.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(144, 162, 120, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 16, Nome = "The La's", Sobre = "", Foto = "16.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(246, 162, 63, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 17, Nome = "MC Poze do Rodo", Sobre = "", Foto = "17.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(217, 45, 64, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 18, Nome = "Rúbel", Sobre = "", Foto = "18.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(19, 19, 19, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 19, Nome = "Phillip Long", Sobre = "", Foto = "19.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(246, 162, 63, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 20, Nome = "John Mayer", Sobre = "", Foto = "20.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(252, 181, 180, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 21, Nome = "MC Lan", Sobre = "", Foto = "21.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(215, 44, 63, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 22, Nome = "Red Hot Chili Peppers", Sobre = "", Foto = "22.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(17, 17, 17, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 23, Nome = "The Beatles", Sobre = "", Foto = "23.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(43, 59, 60, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 24, Nome = "George Harrison", Sobre = "", Foto = "24.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(217, 217, 217, 1)", DataRegistro = dataAgora });
-                await context.Bandas.AddAsync(new Banda() { BandaId = 25, Nome = "Marisa Monte", Sobre = "", Foto = "25.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(230, 202, 179, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 1, Nome = "Queen", Sobre = string.Empty, Foto = "1.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(194, 46, 65, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 2, Nome = "Oasis", Sobre = string.Empty, Foto = "2.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(34, 19, 24, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 3, Nome = "Arctic Monkeys", Sobre = string.Empty, Foto = "3.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(80, 124, 147, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 4, Nome = "Tame Impala", Sobre = string.Empty, Foto = "4.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 5, Nome = "Cage The Elephant", Sobre = string.Empty, Foto = "5.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 6, Nome = "The Strokes", Sobre = string.Empty, Foto = "6.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(27, 34, 40, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 7, Nome = "Broken Bells", Sobre = string.Empty, Foto = "7.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 8, Nome = "The Shins", Sobre = string.Empty, Foto = "8.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(180, 222, 201, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 9, Nome = "alt-J", Sobre = string.Empty, Foto = "9.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 10, Nome = "The Neighbourhood", Foto = "10.webp", Sobre = string.Empty, Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 11, Nome = "One Direction", Sobre = string.Empty, Foto = "11.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(181, 224, 200, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 12, Nome = "Harry Styles", Sobre = string.Empty, Foto = "12.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(203, 120, 123, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 13, Nome = "Billie Eilish", Sobre = string.Empty, Foto = "13.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(249, 187, 94, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 14, Nome = "Zayn", Sobre = string.Empty, Foto = "14.webp", Seguidores = 0, IsAtivo = true, CorDominante = null, DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 15, Nome = "Chaleco's Group", Sobre = string.Empty, Foto = "15.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(144, 162, 120, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 16, Nome = "The La's", Sobre = string.Empty, Foto = "16.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(246, 162, 63, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 17, Nome = "MC Poze do Rodo", Sobre = string.Empty, Foto = "17.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(217, 45, 64, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 18, Nome = "Rúbel", Sobre = string.Empty, Foto = "18.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(19, 19, 19, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 19, Nome = "Phillip Long", Sobre = string.Empty, Foto = "19.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(246, 162, 63, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 20, Nome = "John Mayer", Sobre = string.Empty, Foto = "20.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(252, 181, 180, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 21, Nome = "MC Lan", Sobre = string.Empty, Foto = "21.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(215, 44, 63, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 22, Nome = "Red Hot Chili Peppers", Sobre = string.Empty, Foto = "22.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(17, 17, 17, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 23, Nome = "The Beatles", Sobre = string.Empty, Foto = "23.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(43, 59, 60, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 24, Nome = "George Harrison", Sobre = string.Empty, Foto = "24.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(217, 217, 217, 1)", DataRegistro = dataAgora });
+                await context.Bandas.AddAsync(new Banda() { BandaId = 25, Nome = "Marisa Monte", Sobre = string.Empty, Foto = "25.webp", Seguidores = 0, IsAtivo = true, CorDominante = "rgba(230, 202, 179, 1)", DataRegistro = dataAgora });
             }
 
             if (!await context.BandasArtistas.AnyAsync())
@@ -252,16 +252,16 @@ namespace Spotify.API.Data
             // Albuns e AlbunsMusicas;
             if (!await context.Albuns.AnyAsync())
             {
-                await context.Albuns.AddAsync(new Album() { AlbumId = 1, Nome = "Is This It", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 6, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 2, Nome = "Favourite Worst Nightmare", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 3, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 3, Nome = "Continuum", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 20, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 4, Nome = "Sob Rock", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 20, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 5, Nome = "Definitely Maybe", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 2, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 6, Nome = "Happier Than Ever", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 13, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 7, Nome = "Take Me Home", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 11, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 8, Nome = "AM", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 3, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 9, Nome = "The Getaway", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 22, IsAtivo = true, DataRegistro = dataAgora });
-                await context.Albuns.AddAsync(new Album() { AlbumId = 10, Nome = "All Things Must Pass", Sobre = "", Foto = "", DataLancamento = dataAgora, BandaId = 24, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 1, Nome = "Is This It", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 6, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 2, Nome = "Favourite Worst Nightmare", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 3, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 3, Nome = "Continuum", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 20, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 4, Nome = "Sob Rock", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 20, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 5, Nome = "Definitely Maybe", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 2, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 6, Nome = "Happier Than Ever", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 13, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 7, Nome = "Take Me Home", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 11, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 8, Nome = "AM", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 3, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 9, Nome = "The Getaway", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 22, IsAtivo = true, DataRegistro = dataAgora });
+                await context.Albuns.AddAsync(new Album() { AlbumId = 10, Nome = "All Things Must Pass", Sobre = string.Empty, Foto = string.Empty, DataLancamento = dataAgora, BandaId = 24, IsAtivo = true, DataRegistro = dataAgora });
             }
 
             if (!await context.AlbunsMusicas.AnyAsync())

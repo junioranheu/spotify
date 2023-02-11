@@ -112,9 +112,9 @@ namespace Spotify.API.Services
                 NomeCompleto = dto?.NomeCompleto,
                 Email = dto?.Email,
                 NomeUsuarioSistema = dto?.NomeUsuarioSistema,
-                Senha = Criptografar(dto?.Senha ?? ""),
+                Senha = Criptografar(dto?.Senha ?? string.Empty),
                 UsuarioTipoId = (int)UsuarioTipoEnum.Usuario,
-                Foto = "",
+                Foto = string.Empty,
                 DataRegistro = HorarioBrasilia(),
                 DataOnline = HorarioBrasilia(),
                 IsAtivo = true,
@@ -122,7 +122,7 @@ namespace Spotify.API.Services
                 IsVerificado = false,
                 CodigoVerificacao = codigoVerificacao,
                 ValidadeCodigoVerificacao = HorarioBrasilia().AddHours(24),
-                HashUrlTrocarSenha = "",
+                HashUrlTrocarSenha = string.Empty,
                 ValidadeHashUrlTrocarSenha = DateTime.MinValue
             };
 

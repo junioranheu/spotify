@@ -72,7 +72,7 @@ var app = builder.Build();
     }
 
     // Cors;
-    app.UseCors(builder.Configuration["CORSSettings:Cors"] ?? "");
+    app.UseCors(builder.Configuration["CORSSettings:Cors"] ?? string.Empty);
 
     // Outros;
     app.UseAuthentication();

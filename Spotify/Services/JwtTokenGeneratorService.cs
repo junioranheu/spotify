@@ -25,7 +25,7 @@ namespace Spotify.API.Services
             JwtSecurityTokenHandler tokenHandler = new();
 
             SigningCredentials signingCredentials = new(
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret ?? "")),
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret ?? string.Empty)),
                 algorithm: SecurityAlgorithms.HmacSha256Signature
             );
 
@@ -41,7 +41,7 @@ namespace Spotify.API.Services
             {
                 claims = new(new Claim[]
                 {
-                    new Claim(type: ClaimTypes.Name, usuario.NomeCompleto ?? ""),
+                    new Claim(type: ClaimTypes.Name, usuario.NomeCompleto ?? string.Empty),
                     new Claim(type: ClaimTypes.Role, usuario.UsuarioTipoId.ToString()),
                     new Claim(type: ClaimTypes.NameIdentifier, usuario.UsuarioId.ToString())
                 });
@@ -82,7 +82,7 @@ namespace Spotify.API.Services
                 ValidateAudience = false,
                 ValidateIssuer = false,
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret ?? "")),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret ?? string.Empty)),
                 ValidateLifetime = false
             };
 

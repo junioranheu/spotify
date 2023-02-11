@@ -16,7 +16,7 @@ namespace Spotify.Utils
     public class Biblioteca
     {
         // Pegar informações do appsettings: https://stackoverflow.com/a/58432834 (Necessário instalar o pacote "Microsoft.Extensions.Configuration.Json");
-        static readonly string encriptionKey = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("PasswordEncryptionSettings")["EncryptionKey"] ?? "";
+        static readonly string encriptionKey = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("PasswordEncryptionSettings")["EncryptionKey"] ?? string.Empty;
 
         // Converter para o horário de Brasilia: https://blog.yowko.com/timezoneinfo-time-zone-id-not-found/;
         public static DateTime HorarioBrasilia()
@@ -91,7 +91,7 @@ namespace Spotify.Utils
         public static Tuple<bool, string> ValidarSenha(string senha, string nomeCompleto, string nomeUsuario, string email)
         {
             bool isValido = true;
-            string msgErro = "";
+            string msgErro = string.Empty;
 
             var temNumero = new Regex(@"[0-9]+");
             if (!temNumero.IsMatch(senha))
@@ -203,7 +203,7 @@ namespace Spotify.Utils
             }
             catch (Exception ex)
             {
-                return Tuple.Create(false, "");
+                return Tuple.Create(false, string.Empty);
             }
         }
 

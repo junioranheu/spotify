@@ -33,7 +33,7 @@ namespace Spotify.API.Controllers
             if (!String.IsNullOrEmpty(fotoBase64))
             {
                 var file = Base64ToFile(fotoBase64);
-                await UparArquivo(file, newPlaylist.Foto, GetDescricaoEnum(CaminhosUploadEnum.UploadPlaylists), "", _webHostEnvironment);
+                await UparArquivo(file, newPlaylist.Foto, GetDescricaoEnum(CaminhosUploadEnum.UploadPlaylists), string.Empty, _webHostEnvironment);
             }
 
             return Ok(newPlaylist);

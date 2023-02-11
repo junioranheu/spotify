@@ -23,9 +23,9 @@ namespace Spotify.API.Filters
 
             LogDTO dto = new()
             {
-                TipoRequisicao = request.Method ?? "",
-                Endpoint = request.Path.Value ?? "",
-                QueryString = request.QueryString.ToString() ?? "",
+                TipoRequisicao = request.Method ?? string.Empty,
+                Endpoint = request.Path.Value ?? string.Empty,
+                QueryString = request.QueryString.ToString() ?? string.Empty,
                 Parametros = GetParametrosRequisicao(filterContextExecuting),
                 StatusResposta = response.StatusCode > 0 ? response.StatusCode : 0,
                 UsuarioNome = GetUsuarioNome(filterContextExecuted),
@@ -47,7 +47,7 @@ namespace Spotify.API.Filters
         {
             if (filterContextExecuted.HttpContext.User.Identity.IsAuthenticated)
             {
-                return filterContextExecuted.HttpContext.User?.FindFirstValue(ClaimTypes.Name) ?? "";
+                return filterContextExecuted.HttpContext.User?.FindFirstValue(ClaimTypes.Name) ?? string.Empty;
             }
 
             return string.Empty;

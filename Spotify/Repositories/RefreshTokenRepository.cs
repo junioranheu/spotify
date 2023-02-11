@@ -43,7 +43,7 @@ namespace Spotify.API.Repositories
                        Where(r => r.UsuarioId == usuarioId && r.Usuarios.IsAtivo == true).
                        AsNoTracking().FirstOrDefaultAsync();
 
-            string refreshToken = byId?.RefToken ?? "";
+            string refreshToken = byId?.RefToken ?? string.Empty;
             return refreshToken;
         }
     }

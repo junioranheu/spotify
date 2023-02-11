@@ -86,7 +86,7 @@ namespace Spotify.API.Controllers
                 }
                 else
                 {
-                    return "";
+                    return string.Empty;
                 }
             });
         }
@@ -101,7 +101,7 @@ namespace Spotify.API.Controllers
                 // Verificar se o arquivo tem extensão, se não tiver, adicione;
                 if (!Path.HasExtension(nomeArquivo))
                 {
-                    return Tuple.Create(false, "");
+                    return Tuple.Create(false, string.Empty);
                 }
 
                 string caminhoDestino = $"{caminho}{nomeArquivo}"; // Caminho de destino para upar;
@@ -130,7 +130,7 @@ namespace Spotify.API.Controllers
                 }
                 else
                 {
-                    return Tuple.Create(false, "");
+                    return Tuple.Create(false, string.Empty);
                 }
             });
         }

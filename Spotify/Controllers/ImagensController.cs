@@ -22,7 +22,7 @@ namespace Spotify.API.Controllers
 
             if (!System.IO.File.Exists(caminhoDestino))
             {
-                return "";
+                return string.Empty;
             }
 
             byte[] imageArray = System.IO.File.ReadAllBytes(caminhoDestino);
