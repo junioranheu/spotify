@@ -9,7 +9,8 @@ namespace Spotify.API.DTOs
         public int LogId { get; set; }
         public string? TipoRequisicao { get; set; } = null;
         public string? Endpoint { get; set; } = null;
-        public string? Query { get; set; } = null;
+        public string? QueryString { get; set; } = null;
+        public string? Parametros { get; set; } = null;
         public int? StatusResposta { get; set; } = 0;
 
         public string? UsuarioNome { get; set; } = null;
