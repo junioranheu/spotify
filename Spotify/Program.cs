@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
     // Técnica para adicionar o conteúdo de "infra" em uma classe centralizada: https://youtu.be/fhM0V2N1GpY?t=2149
     builder.Services.AddDependencyInjection(builder);
 
-    // Filtro de erros;
+    // Filtros;
+    builder.Services.AddControllers(o => o.Filters.Add<SuccessHandlingFilterAttribute>());
     builder.Services.AddControllers(o => o.Filters.Add<ErrorHandlingFilterAttribute>());
 
     // Habilitar API por IP em vez de apenas localhost: https://stackoverflow.com/questions/69532898/asp-net-core-6-0-kestrel-server-is-not-working;
