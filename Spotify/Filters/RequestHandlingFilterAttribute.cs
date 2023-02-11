@@ -37,8 +37,10 @@ namespace Spotify.API.Filters
 
         private static string GetParametrosRequisicao(ActionExecutingContext filterContextExecuting)
         {
-            var parametros = filterContextExecuting.ActionArguments.FirstOrDefault().Value ?? null;
-            return JsonConvert.SerializeObject(parametros) ?? string.Empty;
+            var parametros = filterContextExecuting.ActionArguments.FirstOrDefault().Value ?? string.Empty;
+            string parametrosSerialiazed = !String.IsNullOrEmpty(parametros.ToString()) ? JsonConvert.SerializeObject(parametros) : string.Empty;
+
+            return parametrosSerialiazed;
         }
 
         private static string GetUsuarioNome(ActionExecutedContext filterContextExecuted)
