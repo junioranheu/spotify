@@ -11,7 +11,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-		<PackageReference Include="TimeZoneConverter" Version="6.0.1" />
+		<PackageReference Include="TimeZoneConverter" Version="6.1.0" />
 		<PackageReference Include="VideoLibrary" Version="3.2.3" />
 	</ItemGroup>
 
