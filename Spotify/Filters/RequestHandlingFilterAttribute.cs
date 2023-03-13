@@ -38,14 +38,21 @@ namespace Spotify.API.Filters
         private static string GetParametrosRequisicao(ActionExecutingContext filterContextExecuting)
         {
             var parametros = filterContextExecuting.ActionArguments.FirstOrDefault().Value ?? string.Empty;
-            string parametrosSerialiazed = !String.IsNullOrEmpty(parametros.ToString()) ? JsonConvert.SerializeObject(parametros) : string.Empty;
 
-            return parametrosSerialiazed;
+            try
+            {
+                string parametrosSerialiazed = !String.IsNullOrEmpty(parametros.ToString()) ? JsonConvert.SerializeObject(parametros) : string.Empty;
+                return parametrosSerialiazed;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
 
         private static string GetUsuarioNome(ActionExecutedContext filterContextExecuted)
         {
-            if (filterContextExecuted.HttpContext.User.Identity.IsAuthenticated)
+            if (filterContextExecuted.HttpContext.User.Identity!.IsAuthenticated)
             {
                 return filterContextExecuted.HttpContext.User?.FindFirstValue(ClaimTypes.Name) ?? string.Empty;
             }
@@ -55,7 +62,7 @@ namespace Spotify.API.Filters
 
         private static int GetUsuarioId(ActionExecutedContext filterContextExecuted)
         {
-            if (filterContextExecuted.HttpContext.User.Identity.IsAuthenticated)
+            if (filterContextExecuted.HttpContext.User.Identity!.IsAuthenticated)
             {
                 return Convert.ToInt32(filterContextExecuted.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier));
             }
