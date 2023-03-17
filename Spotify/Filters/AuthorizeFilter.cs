@@ -3,10 +3,10 @@ using Spotify.API.Enums;
 
 namespace Spotify.API.Filters
 {
-    public class CustomAuthorize : AuthorizeAttribute
+    public class AuthorizeFilter : AuthorizeAttribute
     {
         // https://stackoverflow.com/questions/1148312/asp-net-mvc-decorate-authorize-with-multiple-enums
-        public CustomAuthorize(params UsuarioTipoEnum[] roles)
+        public AuthorizeFilter(params UsuarioTipoEnum[] roles)
         {
             string resultadoFinal = string.Empty;
 

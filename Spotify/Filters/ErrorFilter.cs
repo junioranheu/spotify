@@ -4,7 +4,7 @@ using System.Net;
 
 namespace Spotify.API.Filters
 {
-    public class ErrorHandlingFilterAttribute : ExceptionFilterAttribute
+    public class ErrorFilter : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
         {

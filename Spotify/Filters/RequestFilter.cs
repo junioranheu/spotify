@@ -7,11 +7,11 @@ using System.Security.Claims;
 
 namespace Spotify.API.Filters
 {
-    public class RequestHandlingFilterAttribute : ActionFilterAttribute
+    public class RequestFilter : ActionFilterAttribute
     {
         private readonly ILogRepository _logRepository;
 
-        public RequestHandlingFilterAttribute(ILogRepository logRepository)
+        public RequestFilter(ILogRepository logRepository)
         {
             _logRepository = logRepository;
         }

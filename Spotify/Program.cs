@@ -10,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddDependencyInjection(builder);
 
     // Filtros;
-    builder.Services.AddControllers(o => o.Filters.Add<RequestHandlingFilterAttribute>());
-    builder.Services.AddControllers(o => o.Filters.Add<ErrorHandlingFilterAttribute>());
+    builder.Services.AddControllers(o => o.Filters.Add<RequestFilter>());
+    builder.Services.AddControllers(o => o.Filters.Add<ErrorFilter>());
 
     // Habilitar API por IP em vez de apenas localhost: https://stackoverflow.com/questions/69532898/asp-net-core-6-0-kestrel-server-is-not-working;
     if (builder.Environment.IsDevelopment())

@@ -18,7 +18,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpPost("adicionar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador)]
         public async Task<ActionResult<bool>> Adicionar(LogDTO dto)
         {
             await _logRepository.Adicionar(dto);
@@ -26,7 +26,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpGet("todos")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador)]
         public async Task<ActionResult<List<LogDTO>>> GetTodos()
         {
             var todos = await _logRepository.GetTodos();
@@ -34,7 +34,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador)]
         public async Task<ActionResult<LogDTO>> GetById(int id)
         {
             var porId = await _logRepository.GetById(id);

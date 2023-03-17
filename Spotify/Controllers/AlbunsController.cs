@@ -18,7 +18,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpPost("adicionar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador)]
         public async Task<ActionResult<bool>> Adicionar(AlbumDTO dto)
         {
             await _albumRepository.Adicionar(dto);
@@ -26,7 +26,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpPut("atualizar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador)]
         public async Task<ActionResult<bool>> Atualizar(AlbumDTO dto)
         {
             await _albumRepository.Atualizar(dto);
@@ -34,7 +34,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpDelete("deletar/{id}")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador)]
         public async Task<ActionResult<int>> Deletar(int id)
         {
             await _albumRepository.Deletar(id);

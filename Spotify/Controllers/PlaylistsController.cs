@@ -22,7 +22,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpPost("adicionar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
         public async Task<ActionResult<PlaylistDTO>> Adicionar(PlaylistDTO dto)
         {
             string fotoBase64 = dto.Foto;
@@ -40,7 +40,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpPut("atualizar")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador, UsuarioTipoEnum.Usuario)]
         public async Task<ActionResult<PlaylistDTO>> Atualizar(PlaylistDTO dto)
         {
             string fotoBase64 = dto.Foto;
@@ -58,7 +58,7 @@ namespace Spotify.API.Controllers
         }
 
         [HttpDelete("deletar/{id}")]
-        [CustomAuthorize(UsuarioTipoEnum.Administrador)]
+        [AuthorizeFilter(UsuarioTipoEnum.Administrador)]
         public async Task<ActionResult<int>> Deletar(int id)
         {
             await _playlistRepository.Deletar(id);
