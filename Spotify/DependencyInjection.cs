@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Spotify.API.AutoMapper;
 using Spotify.API.Data;
+using Spotify.API.Filters;
 using Spotify.API.Interfaces;
 using Spotify.API.Models;
 using Spotify.API.Repositories;
 using Spotify.API.Services;
+using System.IO.Compression;
 using System.Text;
 
 namespace Spotify.API
@@ -18,6 +21,8 @@ namespace Spotify.API
         // Como importar o parâmetro "WebApplicationBuilder" caso aconteça algum erro: https://stackoverflow.com/questions/71146292/how-import-webapplicationbuilder-in-a-class-library
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, WebApplicationBuilder builder)
         {
+            AddCompression(builder);
+            AddControllers(builder);
             AddJwtSettings(services, builder);
             AddAutoMapper(services);
             AddServices(services, builder);
@@ -27,6 +32,39 @@ namespace Spotify.API
             AddCors(builder);
 
             return services;
+        }
+
+        private static void AddCompression(WebApplicationBuilder builder)
+        {
+            builder.Services.AddResponseCompression(o =>
+            {
+                o.EnableForHttps = true;
+                o.Providers.Add<BrotliCompressionProvider>();
+                o.Providers.Add<GzipCompressionProvider>();
+            });
+
+            builder.Services.Configure<BrotliCompressionProviderOptions>(o =>
+            {
+                o.Level = CompressionLevel.Optimal;
+            });
+
+            builder.Services.Configure<GzipCompressionProviderOptions>(o =>
+            {
+                o.Level = CompressionLevel.Optimal;
+            });
+        }
+
+        private static void AddControllers(WebApplicationBuilder builder)
+        {
+            builder.Services.AddControllers(o => o.Filters.Add<RequestFilter>());
+            builder.Services.AddControllers(o => o.Filters.Add<ErrorFilter>());
+
+            builder.Services.AddControllers()
+                .AddNewtonsoftJson(o =>
+                {
+                    o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    o.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+                });
         }
 
         private static void AddJwtSettings(IServiceCollection services, WebApplicationBuilder builder)

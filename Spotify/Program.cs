@@ -1,17 +1,11 @@
 using Microsoft.Extensions.FileProviders;
 using Spotify.API;
 using Spotify.API.Data;
-using Spotify.API.Filters;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 {
-    // Injeção de dependência centralizada;
     builder.Services.AddDependencyInjection(builder);
-
-    // Filtros;
-    builder.Services.AddControllers(o => o.Filters.Add<RequestFilter>());
-    builder.Services.AddControllers(o => o.Filters.Add<ErrorFilter>());
 
     // Habilitar API por IP em vez de apenas localhost: https://stackoverflow.com/questions/69532898/asp-net-core-6-0-kestrel-server-is-not-working;
     if (builder.Environment.IsDevelopment())
@@ -23,14 +17,6 @@ var builder = WebApplication.CreateBuilder(args);
             options.ListenAnyIP(7226);
         });
     }
-
-    // Adicionar comando "AddNewtonsoftJson" para ignorar "erros" de object cycle - https://stackoverflow.com/questions/59199593/net-core-3-0-possible-object-cycle-was-detected-which-is-not-supported;
-    // E também formatar o resultado JSON retornado pelas APIs;
-    builder.Services.AddControllers().AddNewtonsoftJson(options =>
-    {
-        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-        options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-    });
 }
 
 var app = builder.Build();
@@ -73,6 +59,9 @@ var app = builder.Build();
 
     // Cors;
     app.UseCors(builder.Configuration["CORSSettings:Cors"] ?? string.Empty);
+
+    // Comprimir resposta;
+    app.UseResponseCompression();
 
     // Outros;
     app.UseAuthentication();
