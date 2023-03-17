@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 using Spotify.API.DTOs;
 using Spotify.API.Interfaces;
@@ -19,7 +20,8 @@ namespace Spotify.API.Filters
         {
             ActionExecutedContext filterContextExecuted = await next();
             HttpRequest request = filterContextExecuted.HttpContext.Request;
-            HttpResponse response = filterContextExecuted.HttpContext.Response;
+            // HttpResponse response = filterContextExecuted.HttpContext.Response;
+            int? statusResposta = (filterContextExecuted.Result as ObjectResult)?.StatusCode;
 
             LogDTO dto = new()
             {
@@ -27,7 +29,7 @@ namespace Spotify.API.Filters
                 Endpoint = request.Path.Value ?? string.Empty,
                 QueryString = request.QueryString.ToString() ?? string.Empty,
                 Parametros = GetParametrosRequisicao(filterContextExecuting),
-                StatusResposta = response.StatusCode > 0 ? response.StatusCode : 0,
+                StatusResposta = statusResposta > 0 ? (int)statusResposta : 0,
                 UsuarioNome = GetUsuarioNome(filterContextExecuted),
                 UsuarioId = GetUsuarioId(filterContextExecuted)
             };
