@@ -13,7 +13,10 @@ namespace Spotify.API.DTOs
         public string? Senha { get; set; } = null;
         public string? Token { get; set; } = null;
         public string? RefreshToken { get; set; } = null;
+
         public int UsuarioTipoId { get; set; }
+        public UsuarioTipoDTO? UsuariosTipos { get; set; }
+
         public string? Foto { get; set; } = null;
         public DateTime DataRegistro { get; set; } = HorarioBrasilia();
         public DateTime DataOnline { get; set; }
