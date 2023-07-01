@@ -6,7 +6,7 @@ namespace Spotify.Tests.Fixtures.Mocks
 {
     public static class UsuarioMock
     {
-        public static UsuarioSenhaDTO CriarUsuarioInput(string nomeCompleto, string nomeUsuarioSistema, string email, string senha)
+        public static UsuarioSenhaDTO CriarInput(string nomeCompleto, string nomeUsuarioSistema, string email, string senha)
         {
             UsuarioSenhaDTO usuario = new()
             {
@@ -21,12 +21,12 @@ namespace Spotify.Tests.Fixtures.Mocks
             return usuario;
         }
 
-        public static List<UsuarioSenhaDTO> CriarListaUsuarioInput()
+        public static List<UsuarioSenhaDTO> CriarListaInput()
         {
             List<UsuarioSenhaDTO> lista = new()
             {
-                CriarUsuarioInput(GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false)),
-                CriarUsuarioInput(GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false))
+                CriarInput(GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false)),
+                CriarInput(GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false), GerarStringAleatoria(5, false))
             };
 
             return lista;

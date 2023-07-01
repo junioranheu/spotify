@@ -7,6 +7,7 @@ using Spotify.API.Repositories;
 using Spotify.Tests.Fixtures;
 using Spotify.Tests.Fixtures.Mocks;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -33,7 +34,7 @@ namespace Spotify.Tests.Tests.Usuarios
         {
             // Arrange;
             var repository = new UsuarioRepository(_context, _map);
-            UsuarioSenhaDTO input = UsuarioMock.CriarUsuarioInput(nomeCompleto, nomeUsuarioSistema, email, senha);
+            UsuarioSenhaDTO input = UsuarioMock.CriarInput(nomeCompleto, nomeUsuarioSistema, email, senha);
 
             // Act;
             await repository.Adicionar(input)!;
@@ -47,7 +48,7 @@ namespace Spotify.Tests.Tests.Usuarios
         public async Task Listar_ChecarResultadoEsperado()
         {
             // Arrange;
-            List<UsuarioSenhaDTO> listaInput = UsuarioMock.CriarListaUsuarioInput();
+            List<UsuarioSenhaDTO> listaInput = UsuarioMock.CriarListaInput();
             List<Usuario>? lista = _map.Map<List<Usuario>>(listaInput);
 
             await _context.Usuarios.AddRangeAsync(lista);
@@ -59,7 +60,7 @@ namespace Spotify.Tests.Tests.Usuarios
             var resp = await repository.GetTodos()!;
 
             // Assert;
-            Assert.True(resp.Count > 0);
+            Assert.True(resp.Any());
         }
     }
 }
